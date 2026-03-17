@@ -50,7 +50,17 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**',
+      }
     ],
+    dangerouslyAllowSVG: true,
+    unoptimized: process.env.NODE_ENV === 'development',
   },
 };
 
