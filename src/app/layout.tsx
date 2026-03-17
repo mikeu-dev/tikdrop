@@ -86,9 +86,9 @@ export const viewport: Viewport = {
 
 import { Inter, Source_Code_Pro, Outfit } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const sourceCodePro = Source_Code_Pro({ subsets: ["latin"], variable: "--font-source-code-pro", display: "swap" });
-const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap", fallback: ['system-ui', 'arial'] });
+const sourceCodePro = Source_Code_Pro({ subsets: ["latin"], variable: "--font-source-code-pro", display: "swap", fallback: ['monospace'] });
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit", display: "swap", fallback: ['system-ui', 'arial'] });
 
 export default function RootLayout({
   children,
