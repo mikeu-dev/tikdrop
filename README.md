@@ -1,4 +1,4 @@
-# TikTok AdGate Downloader
+# SaveTok ID (formerly TikTok AdGate Downloader)
 
 This is a web application built with Next.js that allows users to download TikTok videos without a watermark for free. To support the service, users are required to watch a short advertisement before their download starts.
 
