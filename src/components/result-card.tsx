@@ -59,8 +59,8 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
       className="perspective-1000"
     >
       <Card className="overflow-hidden shadow-2xl glass bg-white/40 dark:bg-card/40">
-        <CardHeader>
-          <CardTitle className="leading-tight text-xl md:text-3xl font-headline bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-transparent">
+        <CardHeader className="px-4 sm:px-6 pt-6">
+          <CardTitle className="leading-tight text-lg sm:text-xl md:text-3xl font-headline bg-linear-to-br from-foreground to-muted-foreground bg-clip-text text-transparent wrap-break-word">
             {videoData.title}
           </CardTitle>
           <CardDescription className="flex items-center gap-2 text-muted-foreground/80">
@@ -73,9 +73,9 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
             )}
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6">
           {/* Main Video/Cover View */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 shadow-inner cursor-pointer group bg-muted/20" onClick={() => videoUrl && handleDownloadClick(videoUrl, 'MP4')}>
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg sm:rounded-xl border border-white/10 shadow-inner cursor-pointer group bg-muted/20" onClick={() => videoUrl && handleDownloadClick(videoUrl, 'MP4')}>
             <Image
               src={videoData.cover}
               alt={t('result.thumbnailAlt', { title: videoData.title })}
@@ -126,7 +126,7 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
                       <CarouselItem key={idx} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 lg:basis-1/4">
                         <motion.div
                           whileHover={{ y: -5 }}
-                          className="relative aspect-[3/4] rounded-lg overflow-hidden border border-white/10 bg-muted/30 group cursor-pointer shadow-sm hover:shadow-lg transition-all"
+                          className="relative aspect-3/4 rounded-lg overflow-hidden border border-white/10 bg-muted/30 group cursor-pointer shadow-sm hover:shadow-lg transition-all"
                           onClick={() => handleDownloadClick(img, 'JPG')}
                         >
                           <Image
@@ -150,7 +150,7 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
             </div>
           )}
         </CardContent>
-        <CardFooter className="flex flex-col sm:flex-row gap-3 pt-2 pb-6">
+        <CardFooter className="flex flex-col sm:flex-row gap-3 px-4 sm:px-6 pt-2 pb-6">
           {videoUrl ? (
             <Button
               className="w-full sm:w-auto flex-1 font-semibold h-12 text-base shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"

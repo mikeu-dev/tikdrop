@@ -81,12 +81,12 @@ export default function Home() {
               hidden: { opacity: 0, y: -20 },
               show: { opacity: 1, y: 0 }
             }}
-            className="text-center mb-10"
+            className="text-center mb-8 sm:mb-10 px-2"
           >
-            <h1 className="text-4xl md:text-6xl font-bold font-headline mb-4 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_auto] animate-gradient bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-headline mb-3 sm:mb-4 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_auto] animate-gradient bg-clip-text text-transparent">
               {t('home.title')}
             </h1>
-            <p className="text-muted-foreground md:text-xl font-light">
+            <p className="text-sm sm:text-base md:text-xl text-muted-foreground font-light">
               {t('home.subtitle')}
             </p>
           </motion.div>
@@ -150,15 +150,15 @@ export default function Home() {
               hidden: { opacity: 0 },
               show: { opacity: 1 }
             }}
-            className="mt-16 space-y-16 pb-12"
+            className="mt-12 sm:mt-16 space-y-12 sm:space-y-16 pb-12"
           >
             {/* Services Section */}
-            <section>
-              <h2 className="text-2xl font-bold text-center mb-8">{t('services.title')}</h2>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-card p-6 rounded-xl border shadow-sm text-center space-y-4">
-                  <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-primary" />
+            <section className="px-2 sm:px-0">
+              <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">{t('services.title')}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                <div className="bg-card p-5 sm:p-6 rounded-xl border shadow-sm text-center space-y-3 sm:space-y-4">
+                  <div className="mx-auto bg-primary/10 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center">
+                    <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-lg">{t('services.s1.title')}</h3>
                   <p className="text-muted-foreground text-sm">{t('services.s1.desc')}</p>
@@ -174,19 +174,19 @@ export default function Home() {
                   <div className="mx-auto bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center">
                     <MonitorSmartphone className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-lg">{t('services.s3.title')}</h3>
-                  <p className="text-muted-foreground text-sm">{t('services.s3.desc')}</p>
+                  <h3 className="font-semibold text-base sm:text-lg">{t('services.s3.title')}</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm">{t('services.s3.desc')}</p>
                 </div>
               </div>
             </section>
 
             {/* Tutorial Section */}
-            <section>
-              <h2 className="text-2xl font-bold text-center mb-8">{t('tutorial.title')}</h2>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="bg-muted w-16 h-16 rounded-2xl flex items-center justify-center mb-2">
-                    <Copy className="h-8 w-8 text-muted-foreground" />
+            <section className="px-2 sm:px-0">
+              <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">{t('tutorial.title')}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-6">
+                <div className="flex flex-col items-center text-center space-y-3 sm:space-y-4">
+                  <div className="bg-muted w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-1 sm:mb-2">
+                    <Copy className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground" />
                   </div>
                   <h3 className="font-semibold">{t('tutorial.step1.title')}</h3>
                   <p className="text-sm text-muted-foreground">{t('tutorial.step1.desc')}</p>
@@ -203,14 +203,14 @@ export default function Home() {
                     <DownloadIcon className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className="font-semibold">{t('tutorial.step3.title')}</h3>
-                  <p className="text-sm text-muted-foreground">{t('tutorial.step3.desc')}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t('tutorial.step3.desc')}</p>
                 </div>
               </div>
             </section>
 
             {/* FAQ Section */}
-            <section className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold text-center mb-8">{t('faq.title')}</h2>
+            <section className="max-w-3xl mx-auto px-2 sm:px-0">
+              <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8">{t('faq.title')}</h2>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-left font-semibold">{t('faq.q1.q')}</AccordionTrigger>
