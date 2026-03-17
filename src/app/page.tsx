@@ -98,9 +98,9 @@ export default function Home() {
               hidden: { opacity: 0 },
               show: { opacity: 1 }
             }}
-            className="my-10"
+            className="my-5"
           >
-            <AdSense adSlot="1234567890" className="w-full h-28 flex items-center justify-center bg-muted/20 rounded-lg border border-dashed border-muted-foreground/20" />
+            <AdSense adSlot="1234567890" className="w-full" />
           </motion.div>
 
           {isLoading && (

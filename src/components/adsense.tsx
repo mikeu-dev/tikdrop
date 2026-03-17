@@ -41,13 +41,11 @@ const AdSense: FC<AdSenseProps> = ({
   }, [adSlot, pathname, isMounted]);
 
   if (!isMounted) {
-    return (
-      <div className={cn("min-h-[100px]", className)}></div>
-    );
+    return null;
   }
 
   return (
-    <div className={cn("relative flex justify-center items-center overflow-hidden min-h-[100px] rounded-lg", className)} key={pathname + adSlot}>
+    <div className={cn("relative flex justify-center items-center overflow-hidden rounded-lg", className)} key={pathname + adSlot}>
 
 
       {/* External AdSense */}
