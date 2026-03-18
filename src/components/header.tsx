@@ -1,5 +1,6 @@
 import { ThemeToggle } from "./theme-toggle";
 import { Tv2, Languages, LogOut, User as UserIcon, History, Check } from "lucide-react";
+import Image from "next/image";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "./ui/button";
 import { useAuth } from "@/components/auth-provider";
@@ -26,7 +27,7 @@ export function Header() {
     <header className="border-b sticky top-0 z-50 glass bg-white/70 dark:bg-black/40">
       <div className="container mx-auto px-4 flex items-center justify-between h-16 text-foreground dark:text-white">
         <div className="flex items-center gap-2">
-          <Tv2 className="h-6 w-6 text-primary" />
+          <Image src="/logo.png" alt="SaveTok.id Logo" width={32} height={32} className="rounded-lg w-8 h-8 object-contain" />
           <h1 className="text-xl font-bold font-headline tracking-tight text-foreground dark:text-white">{t('header.title')}</h1>
         </div>
         <div className="flex items-center gap-2">
