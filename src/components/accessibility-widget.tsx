@@ -69,9 +69,9 @@ export function AccessibilityWidget() {
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
+            variant="default"
             size="icon"
-            className="rounded-r-2xl rounded-l-none border-l-0 shadow-[4px_0_15px_rgba(0,0,0,0.15)] bg-background border-2 border-primary/20 hover:border-primary/50 text-foreground h-12 w-12 md:h-14 md:w-14 items-center justify-end pr-2 md:pr-3 pl-10 md:pl-12 ml-5 md:ml-6 hover:ml-0 cursor-pointer transition-all duration-300 ease-out"
+            className="rounded-r-2xl rounded-l-none shadow-[4px_0_20px_rgba(var(--primary),0.3)] hover:shadow-[4px_0_25px_rgba(var(--primary),0.5)] h-12 w-12 md:h-14 md:w-14 items-center justify-end pr-2 md:pr-3 pl-10 md:pl-12 ml-5 md:ml-6 hover:ml-0 cursor-pointer transition-all duration-300 ease-out"
             aria-label="Accessibility options"
             title="Accessibility options"
           >
