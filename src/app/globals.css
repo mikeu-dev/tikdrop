@@ -131,3 +131,18 @@
     @apply bg-black/40 border-white/5;
   }
 }
+
+/* Accessibility Modes */
+.access-large-text {
+  font-size: 110% !important;
+}
+
+.access-high-contrast {
+  filter: contrast(125%) saturate(150%) !important;
+}
+
+.access-highlight-links a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+}
