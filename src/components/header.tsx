@@ -1,9 +1,10 @@
 import { ThemeToggle } from "./theme-toggle";
-import { Tv2, Languages, LogOut, User as UserIcon, History, Check } from "lucide-react";
+import { Tv2, Languages, LogOut, User as UserIcon, History, Check, Download } from "lucide-react";
 import Image from "next/image";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "./ui/button";
 import { useAuth } from "@/components/auth-provider";
+import { usePWA } from "@/hooks/use-pwa";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +18,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export function Header() {
   const { t, setLanguage, language } = useLanguage();
   const { user, signInWithGoogle, logout } = useAuth();
+  const { isInstallable, isInstalled, promptInstall } = usePWA();
 
   const toggleLanguage = () => {
     const newLang = language === 'id' ? 'en' : 'id';
@@ -30,7 +32,14 @@ export function Header() {
           <Image src="/logo.png" alt="SaveTok Logo" width={32} height={32} className="rounded-lg w-8 h-8 object-contain" />
           <span className="text-xl font-bold font-headline tracking-tight text-foreground dark:text-white">{t('header.title')}</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+          {!isInstalled && isInstallable && (
+            <Button variant="default" size="sm" onClick={promptInstall} className="hidden sm:flex" aria-label="Install App">
+              <Download className="w-4 h-4 mr-2" />
+              Install
+            </Button>
+          )}
+
           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle language">
             <Languages className="h-[1.2rem] w-[1.2rem]" />
           </Button>
@@ -81,9 +90,13 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button variant="default" size="sm" asChild>
-              <a href="#install">Install Aplikasi</a>
-            </Button>
+            <div className="flex items-center">
+              {!isInstalled && isInstallable && (
+                <Button variant="default" size="sm" onClick={promptInstall} className="sm:hidden mr-1" aria-label="Install App">
+                  Install
+                </Button>
+              )}
+            </div>
           )}
         </div>
       </div>
