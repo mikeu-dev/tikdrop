@@ -271,7 +271,7 @@ export default function Home() {
                 "@graph": [
                   {
                     "@type": "WebApplication",
-                    "name": "SaveTok",
+                    "name": "TikDrop",
                     "url": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
                     "applicationCategory": "MultimediaApplication",
                     "operatingSystem": "All",

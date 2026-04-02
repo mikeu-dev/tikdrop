@@ -1,6 +1,6 @@
-# SaveTok (`savetok.id`)
+# TikDrop (`tikdrop.my.id`)
 
-**SaveTok** is a high-performance, production-ready Progressive Web Application (PWA) built with Next.js 16. It empowers users to download public TikTok videos in HD (MP4), audio (MP3), or image slides (ZIP) without watermarks. Integrated with native monetization capabilities, profound accessibility tools, and multi-language support.
+**TikDrop** is a high-performance, production-ready Progressive Web Application (PWA) built with Next.js 16. It empowers users to download public TikTok videos in HD (MP4), audio (MP3), or image slides (ZIP) without watermarks. Integrated with native monetization capabilities, profound accessibility tools, and multi-language support.
 
 ## ✨ Core Features
 

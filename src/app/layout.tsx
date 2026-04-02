@@ -13,12 +13,12 @@ import { AccessibilityWidget } from '@/components/accessibility-widget';
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 const siteConfig = {
-  name: 'SaveTok',
+  name: 'TikDrop',
   url: baseUrl, // Menunggu domain resmi, sementara pakai ini
   description: 'Download video TikTok tanpa watermark gratis kualitas HD. Simpan VT, MP4, atau lagu MP3 dengan cepat, aman, dan tanpa biaya berlangganan.',
   ogImage: `${baseUrl}/og-image.png`,
   links: {
-    twitter: 'https://twitter.com/savetok',
+    twitter: 'https://twitter.com/tikdrop',
   },
 };
 
@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'SaveTok Team',
+      name: 'TikDrop Team',
       url: siteConfig.url,
     },
   ],
-  creator: 'SaveTok Team',
+  creator: 'TikDrop Team',
 
   openGraph: {
     type: 'website',

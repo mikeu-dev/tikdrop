@@ -5,7 +5,7 @@ import { LegalContent } from '@/components/legal-content';
 
 export const metadata: Metadata = {
   title: 'Disclaimer',
-  description: 'Pernyataan Penyangkalan (Disclaimer) untuk pengguna SaveTok',
+  description: 'Pernyataan Penyangkalan (Disclaimer) untuk pengguna TikDrop',
 };
 
 export default function DisclaimerPage() {

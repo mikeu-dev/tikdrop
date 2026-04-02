@@ -15,7 +15,7 @@ export function Footer() {
         <AdSense adSlot="5555555555" className="w-full text-center mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <div className="text-center md:text-left">
-            <p>&copy; {new Date().getFullYear()} SaveTok. {t('footer.allRightsReserved')}</p>
+            <p>&copy; {new Date().getFullYear()} TikDrop. {t('footer.allRightsReserved')}</p>
             <p className="mt-1">{t('footer.disclaimer')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0 font-medium">

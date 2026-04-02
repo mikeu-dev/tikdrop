@@ -14,16 +14,16 @@ export function LegalContent({ type }: LegalContentProps) {
     return language === 'en' ? (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          At SaveTok, accessible from {process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by SaveTok and how we use it.
+          At TikDrop, accessible from {process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by TikDrop and how we use it.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Information We Collect</h2>
         <p>
-          We do not require users to create an account or provide personally identifiable information to use most of our services. However, when you use SaveTok, we may collect:
+          We do not require users to create an account or provide personally identifiable information to use most of our services. However, when you use TikDrop, we may collect:
         </p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Log Files:</strong> Standard procedure of using log files, which includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks.</li>
-          <li><strong>Cookies and Web Beacons:</strong> Like any other website, SaveTok uses "cookies" to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.</li>
+          <li><strong>Cookies and Web Beacons:</strong> Like any other website, TikDrop uses "cookies" to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited.</li>
         </ul>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Google AdSense and Third Parties</h2>
@@ -44,16 +44,16 @@ export function LegalContent({ type }: LegalContentProps) {
     ) : (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          Di SaveTok, dapat diakses di {process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}, salah satu prioritas utama kami adalah privasi pengunjung. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh SaveTok dan bagaimana kami menggunakannya.
+          Di TikDrop, dapat diakses di {process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}, salah satu prioritas utama kami adalah privasi pengunjung. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh TikDrop dan bagaimana kami menggunakannya.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Informasi yang Kami Kumpulkan</h2>
         <p>
-          Kami tidak mengharuskan pengguna membuat akun atau memberikan informasi identitas pribadi untuk menggunakan sebagian besar layanan kami. Namun, saat Anda menggunakan SaveTok, kami mungkin mengumpulkan:
+          Kami tidak mengharuskan pengguna membuat akun atau memberikan informasi identitas pribadi untuk menggunakan sebagian besar layanan kami. Namun, saat Anda menggunakan TikDrop, kami mungkin mengumpulkan:
         </p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Log Files:</strong> Proses standar log web, yang mencakup alamat Internet Protocol (IP), jenis browser, Internet Service Provider (ISP), cap waktu (tanggal dan waktu), halaman rujukan/keluar, dan jumlah klik.</li>
-          <li><strong>Cookies dan Web Beacons:</strong> Sama seperti situs web lainnya, SaveTok menggunakan "cookie" untuk menyimpan preferensi pengunjung, dan melacak halaman mana yang dikunjungi pengguna.</li>
+          <li><strong>Cookies dan Web Beacons:</strong> Sama seperti situs web lainnya, TikDrop menggunakan "cookie" untuk menyimpan preferensi pengunjung, dan melacak halaman mana yang dikunjungi pengguna.</li>
         </ul>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Google AdSense dan Pihak Ketiga</h2>
@@ -78,12 +78,12 @@ export function LegalContent({ type }: LegalContentProps) {
     return language === 'en' ? (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          Welcome to SaveTok! By accessing our website, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
+          Welcome to TikDrop! By accessing our website, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">1. Use of Service</h2>
         <p>
-          SaveTok is an online tool that helps users download public videos from TikTok. However, our services must be used legally and ethically:
+          TikDrop is an online tool that helps users download public videos from TikTok. However, our services must be used legally and ethically:
         </p>
         <ul className="list-disc pl-6 space-y-2">
           <li>You are prohibited from downloading strictly copyrighted videos and redistributing them for commercial purposes without direct permission from the original content owner.</li>
@@ -92,7 +92,7 @@ export function LegalContent({ type }: LegalContentProps) {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">2. Copyright and Intellectual Property</h2>
         <p>
-          All videos, audio, and content downloaded through our platform belong to their respective content owners/creators on TikTok. SaveTok <strong>DOES NOT CLAIM</strong> ownership, rights, or affiliation to any content you download. Users bear all risks and responsibilities for any use of such third-party content.
+          All videos, audio, and content downloaded through our platform belong to their respective content owners/creators on TikTok. TikDrop <strong>DOES NOT CLAIM</strong> ownership, rights, or affiliation to any content you download. Users bear all risks and responsibilities for any use of such third-party content.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">3. Service Availability</h2>
@@ -102,7 +102,7 @@ export function LegalContent({ type }: LegalContentProps) {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">4. Limitation of Liability</h2>
         <p>
-          SaveTok, its sub-domains, admins, and affiliates shall not be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SaveTok's website.
+          TikDrop, its sub-domains, admins, and affiliates shall not be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on TikDrop's website.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">5. Advertising</h2>
@@ -113,12 +113,12 @@ export function LegalContent({ type }: LegalContentProps) {
     ) : (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          Selamat datang di SaveTok! Dengan mengakses situs web kami, Anda setuju untuk terikat oleh Syarat dan Ketentuan Penggunaan Layanan kami, semua hukum dan peraturan yang berlaku, serta setuju bahwa Anda bertanggung jawab untuk mematuhi hukum setempat yang berlaku.
+          Selamat datang di TikDrop! Dengan mengakses situs web kami, Anda setuju untuk terikat oleh Syarat dan Ketentuan Penggunaan Layanan kami, semua hukum dan peraturan yang berlaku, serta setuju bahwa Anda bertanggung jawab untuk mematuhi hukum setempat yang berlaku.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">1. Penggunaan Layanan</h2>
         <p>
-          SaveTok adalah alat daring (online tool) yang membantu pengguna mengunduh video publik dari TikTok. Namun, layanan kami harus digunakan secara sah dan sesuai etika:
+          TikDrop adalah alat daring (online tool) yang membantu pengguna mengunduh video publik dari TikTok. Namun, layanan kami harus digunakan secara sah dan sesuai etika:
         </p>
         <ul className="list-disc pl-6 space-y-2">
           <li>Anda dilarang mengunduh video yang memiliki hak cipta ketat dan menyebarkannya kembali untuk tujuan komersial tanpa izin langsung dari pemilik konten aslinya.</li>
@@ -127,7 +127,7 @@ export function LegalContent({ type }: LegalContentProps) {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">2. Hak Cipta dan Kekayaan Intelektual</h2>
         <p>
-          Semua video, audio, dan konten yang diunduh melalui platform kami adalah milik masing-masing pemilik konten/kreator di TikTok. SaveTok <strong>TIDAK MENGKLAIM</strong> kepemilikan, hak, atau afilisasi terhadap konten apa pun yang Anda unduh. Pengguna menanggung semua risiko dan tanggung jawab terhadap penggunaan apa pun atas konten pihak ketiga tersebut.
+          Semua video, audio, dan konten yang diunduh melalui platform kami adalah milik masing-masing pemilik konten/kreator di TikTok. TikDrop <strong>TIDAK MENGKLAIM</strong> kepemilikan, hak, atau afilisasi terhadap konten apa pun yang Anda unduh. Pengguna menanggung semua risiko dan tanggung jawab terhadap penggunaan apa pun atas konten pihak ketiga tersebut.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">3. Ketersediaan Layanan</h2>
@@ -137,7 +137,7 @@ export function LegalContent({ type }: LegalContentProps) {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">4. Batasan Tanggung Jawab</h2>
         <p>
-          SaveTok beserta sub-domain, admin, dan pihak terafiliasinya tidak akan dimintai pertanggungjawaban ganti rugi (termasuk tanpa ada batasan kerusakan untuk kehilangan data atau profit, akibat pembatasan komersial) atas kelalaian kerugian saat pemakaian situs ini. 
+          TikDrop beserta sub-domain, admin, dan pihak terafiliasinya tidak akan dimintai pertanggungjawaban ganti rugi (termasuk tanpa ada batasan kerusakan untuk kehilangan data atau profit, akibat pembatasan komersial) atas kelalaian kerugian saat pemakaian situs ini. 
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">5. Iklan</h2>
@@ -152,7 +152,7 @@ export function LegalContent({ type }: LegalContentProps) {
     return language === 'en' ? (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          By using the SaveTok website, you read, understand, and agree to the following statement:
+          By using the TikDrop website, you read, understand, and agree to the following statement:
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Affiliation</h2>
@@ -165,7 +165,7 @@ export function LegalContent({ type }: LegalContentProps) {
           The tools we provide are presented to facilitate access for personal interests and not for commercialization purposes. You are not permitted to commercially distribute content outside of patents unless you have contacted and obtained verbal or written permission from the content owner (creator).
         </p>
         <p>
-          If you violate Copyrights, you are independently responsible for such actions before the law. SaveTok strongly rejects any lawsuits that may occur in the future as a result outside our platform.
+          If you violate Copyrights, you are independently responsible for such actions before the law. TikDrop strongly rejects any lawsuits that may occur in the future as a result outside our platform.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Downloaded Content</h2>
@@ -180,7 +180,7 @@ export function LegalContent({ type }: LegalContentProps) {
     ) : (
       <div className="prose dark:prose-invert max-w-none space-y-6">
         <p>
-          Dengan menggunakan situs SaveTok, Anda membaca, mengerti, dan menyetujui pernyataan berikut:
+          Dengan menggunakan situs TikDrop, Anda membaca, mengerti, dan menyetujui pernyataan berikut:
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Afiliasi</h2>
@@ -193,7 +193,7 @@ export function LegalContent({ type }: LegalContentProps) {
           Alat yang kami sediakan disajikan untuk mempermudah akses bagi kepentingan personal dan bukan tujuan komersialisasi. Anda tidak dibenarkan mendistribusikan secara komersil konten di luar hak paten kecuali Anda sudah menghubungi serta memperoleh izin lisan maupun tertulis dari sang pemilik konten (creator).
         </p>
         <p>
-          Jika Anda melanggar Hak Cipta, Anda bertanggung jawab secara mandiri atas perbuatan tersebut di muka hukum. SaveTok menolak keras segala tuntutan yang mungkin terjadi di masa mendatang sebagai akibat di luar platform kami.
+          Jika Anda melanggar Hak Cipta, Anda bertanggung jawab secara mandiri atas perbuatan tersebut di muka hukum. TikDrop menolak keras segala tuntutan yang mungkin terjadi di masa mendatang sebagai akibat di luar platform kami.
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Konten yang Diunduh</h2>
@@ -223,8 +223,8 @@ export function LegalContent({ type }: LegalContentProps) {
           <p className="text-center text-muted-foreground m-0">
             Please send an electronic message to the address below. We will try to respond within 2x24 business hours.
           </p>
-          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@savetok.com'}`} className="text-2xl font-bold text-primary hover:underline m-0">
-            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@savetok.com'}
+          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}`} className="text-2xl font-bold text-primary hover:underline m-0">
+            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}
           </a>
         </div>
 
@@ -246,8 +246,8 @@ export function LegalContent({ type }: LegalContentProps) {
           <p className="text-center text-muted-foreground m-0">
             Silahkan berkirim pesan elektronik ke alamat di bawah ini. Kami akan berusaha merespons dalam waktu 2x24 jam kerja.
           </p>
-          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@savetok.com'}`} className="text-2xl font-bold text-primary hover:underline m-0">
-            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@savetok.com'}
+          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}`} className="text-2xl font-bold text-primary hover:underline m-0">
+            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}
           </a>
         </div>
 

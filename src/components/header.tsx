@@ -31,7 +31,7 @@ export function Header() {
     <header className="border-b sticky top-0 z-50 glass bg-white/70 dark:bg-black/40">
       <div className="container mx-auto px-4 flex items-center justify-between h-16 text-foreground dark:text-white">
         <a href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" alt="SaveTok Logo" width={32} height={32} className="rounded-lg w-8 h-8 object-contain" />
+          <Image src="/logo.png" alt="TikDrop Logo" width={32} height={32} className="rounded-lg w-8 h-8 object-contain" />
           <span className="text-xl font-bold font-headline tracking-tight text-foreground dark:text-white">{t('header.title')}</span>
         </a>
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">

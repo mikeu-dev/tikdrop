@@ -5,7 +5,7 @@ import { LegalContent } from '@/components/legal-content';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Hubungi tim SaveTok untuk pertanyaan dan masukan.',
+  description: 'Hubungi tim TikDrop untuk pertanyaan dan masukan.',
 };
 
 export default function ContactUsPage() {
