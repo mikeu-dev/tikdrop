@@ -83,7 +83,7 @@ export default function Home() {
             }}
             className="text-center mb-8 sm:mb-10 px-2"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-headline mb-3 sm:mb-4 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_auto] animate-gradient bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold font-headline mb-3 sm:mb-4 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_auto] animate-gradient bg-clip-text text-transparent pb-1 md:pb-2 leading-tight md:leading-snug">
               {t('home.title')}
             </h1>
             <p className="text-sm sm:text-base md:text-xl text-muted-foreground font-light">
