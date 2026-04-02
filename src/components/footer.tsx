@@ -3,7 +3,6 @@
 import { useLanguage } from '@/hooks/use-language';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import AdSense from './adsense';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -12,7 +11,6 @@ export function Footer() {
   return (
     <footer className="border-t bg-white/40 dark:bg-black/20 backdrop-blur-sm mt-auto">
       <div className="container mx-auto px-4 py-8">
-        <AdSense adSlot="5555555555" className="w-full text-center mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <div className="text-center md:text-left">
             <p>&copy; {new Date().getFullYear()} TikDrop. {t('footer.allRightsReserved')}</p>

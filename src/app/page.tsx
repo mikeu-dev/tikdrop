@@ -9,7 +9,6 @@ import { getVideoInfo } from '@/lib/api';
 import { Header } from '@/components/header';
 import { InputForm } from '@/components/input-form';
 import { ResultCard } from '@/components/result-card';
-import AdSense from '@/components/adsense';
 import { Footer } from '@/components/footer';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -93,14 +92,7 @@ export default function Home() {
 
           <InputForm onSubmit={handleFetchVideo} isLoading={isLoading} />
 
-          <motion.div
-            variants={{
-              hidden: { opacity: 0 },
-              show: { opacity: 1 }
-            }}
-          >
-            <AdSense adSlot="1234567890" className="w-full" />
-          </motion.div>
+
 
           {isLoading && (
             <motion.div

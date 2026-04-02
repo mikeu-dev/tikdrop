@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState, FC, useRef } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 declare global {
   interface Window {
