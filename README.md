@@ -44,6 +44,6 @@ Open `http://localhost:9002` to start exploring the application locally.
 
 ## 📄 Legal & License
 
-Distributed under the **MIT License**. Authored by `mikeu-dev`.
+Distributed under the **[MIT License](LICENSE)**. Authored by `mikeu-dev`.
 
 **Disclaimer**: This project is an independent tool and is **NOT AFFILIATED** with TikTok, ByteDance, or any of their corporate entities. The downloaded content remains the copyright of its original creators.
