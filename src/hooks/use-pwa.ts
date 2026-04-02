@@ -19,7 +19,11 @@ export function usePWA() {
 
   useEffect(() => {
     // Check if already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                        (window.navigator as any).standalone || 
+                        document.referrer.includes('android-app://');
+    
+    if (isStandalone) {
       setIsInstalled(true);
     }
 
@@ -38,6 +42,7 @@ export function usePWA() {
       // Hide the install button
       setIsInstallable(false);
       setIsInstalled(true);
+      console.log('PWA was installed');
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -57,9 +62,14 @@ export function usePWA() {
     deferredPrompt.prompt();
     // Wait for the user to respond to the prompt
     const { outcome } = await deferredPrompt.userChoice;
+    console.log(`User response to the install prompt: ${outcome}`);
     // We've used the prompt, and can't use it again, throw it away
     setDeferredPrompt(null);
     setIsInstallable(false);
+    
+    if (outcome === 'accepted') {
+        setIsInstalled(true);
+    }
   };
 
   return { isInstallable, isInstalled, promptInstall };

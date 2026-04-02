@@ -1,19 +1,72 @@
 {
-  "name": "TikDrop",
+  "name": "TikDrop - TikTok Video Downloader",
   "short_name": "TikDrop",
+  "description": "Download TikTok videos without watermark in HD quality. Fast, free, and easy to use.",
+  "categories": ["utilities", "productivity", "multimedia"],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile.png",
+      "sizes": "1280x2778",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Download TikTok videos on the go"
+    },
+    {
+      "src": "/screenshots/desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop-optimized downloading experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Paste Link",
+      "short_name": "Paste",
+      "description": "Quickly paste a TikTok link to download",
+      "url": "/?action=paste",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View History",
+      "short_name": "History",
+      "description": "View your recent downloads",
+      "url": "/history",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }

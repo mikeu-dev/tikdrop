@@ -7,6 +7,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { Button } from "./ui/button";
 import { useAuth } from "@/components/auth-provider";
 import { usePWA } from "@/hooks/use-pwa";
+import { motion } from "framer-motion";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,10 +37,24 @@ export function Header() {
         </a>
         <div className="flex flex-wrap items-center gap-1 sm:gap-2">
           {!isInstalled && isInstallable && (
-            <Button variant="default" size="sm" onClick={promptInstall} className="hidden sm:flex" aria-label={t('header.install')}>
-              <Download className="w-4 h-4 mr-2" />
-              {t('header.install')}
-            </Button>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden sm:flex"
+            >
+              <Button 
+                variant="default" 
+                size="sm" 
+                onClick={promptInstall} 
+                className="bg-linear-to-r from-primary to-accent border-none shadow-lg shadow-primary/20" 
+                aria-label={t('header.install')}
+              >
+                <Download className="w-4 h-4 mr-2" />
+                {t('header.install')}
+              </Button>
+            </motion.div>
           )}
 
           <Button variant="ghost" size="icon" onClick={toggleLanguage} aria-label="Toggle language">

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useLocalStorage } from '@/hooks/use-local-storage';
 
 import type { VideoData } from '@/lib/types';
@@ -24,6 +25,43 @@ import { motion } from 'framer-motion';
 
 import { saveDownload } from '@/lib/db/downloads';
 import { useAuth } from '@/components/auth-provider';
+
+function ShareHandler({ onShare }: { onShare: (url: string) => void }) {
+  const searchParams = useSearchParams();
+  
+  useEffect(() => {
+    const text = searchParams.get('text');
+    const url = searchParams.get('url');
+    const title = searchParams.get('title');
+    const action = searchParams.get('action');
+    
+    // Handle action=paste (PWA shortcut)
+    if (action === 'paste') {
+        const inputElement = document.querySelector('input[name="url"]') as HTMLInputElement;
+        if (inputElement) {
+            inputElement.focus();
+        }
+    }
+
+    const sharedData = text || url || title || '';
+    
+    if (sharedData) {
+      // RegEx untuk mencari URL tiktok.com (bisa berupa vt.tiktok.com atau tiktok.com)
+      const tiktokRegex = /https?:\/\/(?:[a-zA-Z0-9-]+\.)*tiktok\.com\/[a-zA-Z0-9/._?-]+/;
+      const match = sharedData.match(tiktokRegex);
+      
+      if (match && match[0]) {
+        onShare(match[0]);
+        // Bersihkan URL agar tidak re-trigger saat refresh
+        if (typeof window !== 'undefined') {
+          window.history.replaceState({}, '', '/');
+        }
+      }
+    }
+  }, [searchParams, onShare]);
+  
+  return null;
+}
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,6 +98,9 @@ export default function Home() {
   return (
     <>
       <Header />
+      <Suspense fallback={null}>
+        <ShareHandler onShare={handleFetchVideo} />
+      </Suspense>
       <motion.main
         initial="hidden"
         animate="show"
