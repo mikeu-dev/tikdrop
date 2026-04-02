@@ -49,7 +49,7 @@ const AdSense: FC<AdSenseProps> = ({
       key={pathname + adSlot}
       className={cn("adsbygoogle block w-full data-[ad-status=unfilled]:hidden!", className)}
       style={{ display: 'block' }}
-      data-ad-client="ca-pub-6698556269439251"
+      data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-6698556269439251"}
       data-ad-slot={adSlot}
       data-ad-format={adFormat}
       data-full-width-responsive={fullWidthResponsive.toString()}

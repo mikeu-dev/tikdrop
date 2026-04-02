@@ -107,8 +107,8 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
-        <meta name="google-adsense-account" content="ca-pub-6698556269439251" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6698556269439251" crossOrigin="anonymous"></script>
+        <meta name="google-adsense-account" content={process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-6698556269439251"} />
+        <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-6698556269439251"}`} crossOrigin="anonymous"></script>
         
         {/* Google Analytics GA4 */}
         {process.env.NEXT_PUBLIC_MEASUREMENT_ID && (

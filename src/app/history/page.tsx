@@ -79,7 +79,7 @@ export default function HistoryPage() {
                                 transition={{ delay: index * 0.05 }}
                                 className="bg-card rounded-xl border shadow-sm overflow-hidden hover:shadow-md transition-shadow"
                             >
-                                <div className="aspect-[16/9] relative bg-black/5">
+                                <div className="aspect-video relative bg-black/5">
                                     {/* Thumbnail usually 9:16 for TikTok, so we crop/contain */}
                                     {item.video.cover && (
                                         <img
