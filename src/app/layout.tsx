@@ -14,9 +14,9 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
 const siteConfig = {
   name: 'TikDrop',
-  url: baseUrl, // Menunggu domain resmi, sementara pakai ini
+  url: baseUrl, 
   description: 'Download video TikTok tanpa watermark gratis kualitas HD. Simpan VT, MP4, atau lagu MP3 dengan cepat, aman, dan tanpa biaya berlangganan.',
-  ogImage: `${baseUrl}/logo.png`, // Point to existing icon instead of missing og-image
+  ogImage: `${baseUrl}/logo.png`, 
   links: {
     twitter: 'https://twitter.com/tikdrop',
   },
