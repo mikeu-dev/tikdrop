@@ -1,7 +1,9 @@
 {
-  "name": "nextn",
+  "name": "savetok.id",
   "version": "0.1.0",
   "private": true,
+  "author": "mikeu-dev",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
