@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import AdSense from './adsense';
-import { Download, Hourglass } from 'lucide-react';
+import { Download, Hourglass, Loader2 } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 
 interface DownloadModalProps {
@@ -20,6 +20,7 @@ export const DownloadModal: FC<DownloadModalProps> = ({ open, onOpenChange, down
   const [adDuration, setAdDuration] = useState(10);
   const [isDownloadReady, setIsDownloadReady] = useState(false);
   const [isLoadingConfig, setIsLoadingConfig] = useState(true);
+  const [isDownloading, setIsDownloading] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -56,18 +57,41 @@ export const DownloadModal: FC<DownloadModalProps> = ({ open, onOpenChange, down
     }
   }, [open, isLoadingConfig, adDuration]);
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!downloadInfo) return;
-    const link = document.createElement('a');
-    link.href = downloadInfo.url;
-    link.setAttribute('download', `tiktok_video.${downloadInfo.type.toLowerCase()}`);
-    link.setAttribute('target', '_blank');
-    link.setAttribute('rel', 'noopener noreferrer');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    onDownloadSuccess();
-    onOpenChange(false);
+    
+    try {
+      setIsDownloading(true);
+      // Fetch as blob to force silent background download without navigating tabs
+      const response = await fetch(downloadInfo.url);
+      if (!response.ok) throw new Error('Fetch failed');
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.setAttribute('download', `TikDrop_${Date.now()}.${downloadInfo.type.toLowerCase()}`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+      
+      onDownloadSuccess();
+      onOpenChange(false);
+    } catch (error) {
+      console.warn('Blob download failed or blocked by CORS, falling back to direct link:', error);
+      const link = document.createElement('a');
+      link.href = downloadInfo.url;
+      link.setAttribute('download', `TikDrop_${Date.now()}.${downloadInfo.type.toLowerCase()}`);
+      // Remove target="_blank" to prevent new tabs, relying on browser auto-download mechanisms if possible
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      onDownloadSuccess();
+      onOpenChange(false);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   const progressPercentage = ((adDuration - countdown) / adDuration) * 100;
@@ -123,12 +147,16 @@ export const DownloadModal: FC<DownloadModalProps> = ({ open, onOpenChange, down
         <DialogFooter className="sm:justify-center">
           <Button
             onClick={handleDownload}
-            disabled={!isDownloadReady}
+            disabled={!isDownloadReady || isDownloading}
             className="w-full sm:w-auto min-w-[200px] h-12 text-lg font-semibold shadow-lg hover:shadow-primary/25 transition-all"
             size="lg"
           >
-            <Download className="mr-2 h-5 w-5" />
-            {t('modal.button', { type: downloadInfo?.type || '' })}
+            {isDownloading ? (
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+            ) : (
+              <Download className="mr-2 h-5 w-5" />
+            )}
+            {isDownloading ? t('result.zipping') : t('modal.button', { type: downloadInfo?.type || '' })}
           </Button>
         </DialogFooter>
       </DialogContent>
