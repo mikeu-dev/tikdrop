@@ -58,5 +58,13 @@
     "seo.features.2": "Save TikTok Audio MP3 (Sounds/Music)",
     "seo.features.3": "Free Access with Unlimited Usage",
     "seo.features.4": "High-Speed Downloads available globally",
-    "seo.features.5": "Supports TikTok Photo Slideshow (Stories) downloads"
+    "seo.features.5": "Supports TikTok Photo Slideshow (Stories) downloads",
+    "history.title": "My History",
+    "history.subtitle": "Your recent downloads",
+    "history.empty.title": "No history yet",
+    "history.empty.desc": "Start downloading videos to see them here.",
+    "history.empty.button": "Go Home",
+    "history.download": "Download",
+    "history.noTitle": "No Title",
+    "history.justNow": "Just now"
 }

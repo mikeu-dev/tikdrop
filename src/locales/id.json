@@ -58,5 +58,13 @@
     "seo.features.2": "Simpan Audio MP3 TikTok (Sound/Musik)",
     "seo.features.3": "Akses Gratis dan Tanpa Batasan pemakaian",
     "seo.features.4": "Kecepatan Unduhan Tinggi khusus untuk Pengguna di Indonesia",
-    "seo.features.5": "Mendukung unduhan format Slide Foto (Stories) TikTok"
+    "seo.features.5": "Mendukung unduhan format Slide Foto (Stories) TikTok",
+    "history.title": "Riwayat Unduhan",
+    "history.subtitle": "Daftar video yang baru saja Anda unduh",
+    "history.empty.title": "Belum ada riwayat",
+    "history.empty.desc": "Mulai mengunduh video untuk melihat riwayat di sini.",
+    "history.empty.button": "Kembali ke Beranda",
+    "history.download": "Unduh Ulang",
+    "history.noTitle": "Tanpa Judul",
+    "history.justNow": "Baru Saja"
 }
