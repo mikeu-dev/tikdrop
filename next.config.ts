@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['tikdrop.my.id', 'www.tikdrop.my.id', 'localhost:3000'],
+    },
+  },
 
   images: {
     remotePatterns: [
