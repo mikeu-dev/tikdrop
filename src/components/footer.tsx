@@ -1,3 +1,5 @@
+"use client";
+
 import { useLanguage } from '@/hooks/use-language';
 import AdSense from './adsense';
 

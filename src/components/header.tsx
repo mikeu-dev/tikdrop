@@ -1,3 +1,5 @@
+"use client";
+
 import { ThemeToggle } from "./theme-toggle";
 import { Tv2, Languages, LogOut, User as UserIcon, History, Check, Download } from "lucide-react";
 import Image from "next/image";
