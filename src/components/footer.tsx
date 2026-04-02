@@ -1,10 +1,14 @@
 "use client";
 
 import { useLanguage } from '@/hooks/use-language';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import AdSense from './adsense';
 
 export function Footer() {
   const { t } = useLanguage();
+  const pathname = usePathname();
+
   return (
     <footer className="border-t bg-white/40 dark:bg-black/20 backdrop-blur-sm mt-auto">
       <div className="container mx-auto px-4 py-8">
@@ -15,10 +19,10 @@ export function Footer() {
             <p className="mt-1">{t('footer.disclaimer')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0 font-medium">
-            <a href="/privacy-policy" className="hover:text-primary transition-colors">{t('footer.links.privacy')}</a>
-            <a href="/terms-of-service" className="hover:text-primary transition-colors">{t('footer.links.tos')}</a>
-            <a href="/disclaimer" className="hover:text-primary transition-colors">{t('footer.links.disclaimer')}</a>
-            <a href="/contact" className="hover:text-primary transition-colors">{t('footer.links.contact')}</a>
+            <Link href="/privacy-policy" className={`hover:text-primary transition-colors ${pathname === '/privacy-policy' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.privacy')}</Link>
+            <Link href="/terms-of-service" className={`hover:text-primary transition-colors ${pathname === '/terms-of-service' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.tos')}</Link>
+            <Link href="/disclaimer" className={`hover:text-primary transition-colors ${pathname === '/disclaimer' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.disclaimer')}</Link>
+            <Link href="/contact" className={`hover:text-primary transition-colors ${pathname === '/contact' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.contact')}</Link>
           </div>
         </div>
       </div>
