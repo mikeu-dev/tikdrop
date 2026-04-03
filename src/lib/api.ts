@@ -16,21 +16,8 @@ interface ActionResult {
   error?: string;
 }
 
-export async function getVideoInfo(url: string, lang: Language = 'id'): Promise<ActionResult> {
-  const t = (key: keyof typeof id) => translations[lang][key] || translations['id'][key];
-
-  // Basic validation
-  if (!url || !url.includes('tiktok.com')) {
-    return { success: false, error: t("api.error.invalidUrl") };
-  }
-
+async function fetchWithFallback(url: string, apiUrl: string): Promise<TikTokAPIResponse | null> {
   try {
-    const apiUrl = process.env.TIKTOK_API_URL;
-    if (!apiUrl) {
-      console.error("TIKTOK_API_URL is not defined");
-      return { success: false, error: t("api.error.unexpected") };
-    }
-
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
@@ -41,19 +28,50 @@ export async function getVideoInfo(url: string, lang: Language = 'id'): Promise<
       cache: 'no-store'
     });
 
-    if (!response.ok) {
-      return { success: false, error: `${t("api.error.requestFailed")} ${response.status}` };
-    }
-
-    const result: TikTokAPIResponse = await response.json();
-
-    if (result.code === 0 && result.data) {
-      return { success: true, data: result.data };
-    } else {
-      return { success: false, error: result.msg || t("api.error.getInfoFailed") };
-    }
+    if (!response.ok) return null;
+    return await response.json();
   } catch (error) {
-    console.error('API fetch error:', error);
+    console.error(`Fetch error for ${apiUrl}:`, error);
+    return null;
+  }
+}
+
+export async function getVideoInfo(url: string, lang: Language = 'id'): Promise<ActionResult> {
+  const t = (key: keyof typeof id) => translations[lang][key] || translations['id'][key];
+
+  // Basic validation
+  if (!url || !url.includes('tiktok.com')) {
+    return { success: false, error: t("api.error.invalidUrl") };
+  }
+
+  const primaryUrl = process.env.TIKTOK_API_URL;
+  const secondaryUrl = process.env.TIKTOK_API_SECONDARY_URL;
+
+  if (!primaryUrl) {
+    console.error("TIKTOK_API_URL is not defined");
     return { success: false, error: t("api.error.unexpected") };
   }
+
+  // Try Primary API (Clipra)
+  console.log(`[API] Trying Primary: ${primaryUrl}`);
+  const primaryResult = await fetchWithFallback(url, primaryUrl);
+
+  if (primaryResult && primaryResult.code === 0 && primaryResult.data) {
+    return { success: true, data: primaryResult.data };
+  }
+
+  // Try Secondary API (TikWM)
+  if (secondaryUrl) {
+    console.warn(`[API] Primary failed or returned error. Trying Secondary: ${secondaryUrl}`);
+    const secondaryResult = await fetchWithFallback(url, secondaryUrl);
+
+    if (secondaryResult && secondaryResult.code === 0 && secondaryResult.data) {
+      return { success: true, data: secondaryResult.data };
+    }
+  }
+
+  return { 
+    success: false, 
+    error: primaryResult?.msg || t("api.error.getInfoFailed") 
+  };
 }
