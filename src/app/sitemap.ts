@@ -14,8 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const routes = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    url: `${baseUrl}${route}${route === '' ? '/' : ''}`,
+    lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: route === '' ? 'always' : 'weekly',
     priority: route === '' ? 1 : 0.8,
   }));
