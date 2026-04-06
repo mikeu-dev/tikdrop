@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Anda dapat menambahkan URL blog atau URL dinamis Anda di sini juga ke depannya
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tikdrop.my.id').replace(/\/$/, '');
 
   const staticRoutes = [
     '',
@@ -14,11 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const routes = staticRoutes.map((route) => ({
-    url: `${baseUrl}${route}${route === '' ? '/' : ''}`,
-    lastModified: new Date().toISOString().split('T')[0],
-    changeFrequency: route === '' ? 'always' : 'weekly',
+    url: `${baseUrl}${route || '/'}`,
+    lastModified: new Date(),
+    changeFrequency: (route === '' ? 'always' : 'weekly') as 'always' | 'weekly',
     priority: route === '' ? 1 : 0.8,
   }));
 
-  return routes as MetadataRoute.Sitemap;
+  return routes;
 }
