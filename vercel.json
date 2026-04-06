@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tikdrop.my.id"
+        }
+      ],
+      "destination": "https://www.tikdrop.my.id/:path*",
+      "permanent": true
+    }
+  ]
+}
