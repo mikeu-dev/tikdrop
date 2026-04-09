@@ -25,6 +25,8 @@ import { motion } from 'framer-motion';
 
 import { saveDownload } from '@/lib/db/downloads';
 import { useAuth } from '@/components/auth-provider';
+import { SITE_URL } from '@/lib/constants';
+
 
 function ShareHandler({ onShare }: { onShare: (url: string) => void }) {
   const searchParams = useSearchParams();
@@ -322,7 +324,7 @@ export default function HomeClient() {
                   {
                     "@type": "WebApplication",
                     "name": "TikDrop",
-                    "url": process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+                    "url": SITE_URL,
                     "applicationCategory": "MultimediaApplication",
                     "operatingSystem": "All",
                     "description": t('home.subtitle')
@@ -340,14 +342,14 @@ export default function HomeClient() {
                       "name": "TikDrop",
                       "logo": {
                         "@type": "ImageObject",
-                        "url": `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tikdrop.my.id'}/icon-512x512.png`
+                        "url": `${SITE_URL}/icon-512x512.png`
                       }
                     },
                     "datePublished": "2024-01-01T08:00:00+07:00",
                     "dateModified": "2026-04-07T08:00:00+07:00",
                     "mainEntityOfPage": {
                       "@type": "WebPage",
-                      "@id": process.env.NEXT_PUBLIC_SITE_URL || "https://www.tikdrop.my.id"
+                      "@id": SITE_URL
                     }
                   },
                   {

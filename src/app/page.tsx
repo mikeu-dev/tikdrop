@@ -1,7 +1,8 @@
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 import HomeClient from "./home-client";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tikdrop.my.id";
+const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
   alternates: {

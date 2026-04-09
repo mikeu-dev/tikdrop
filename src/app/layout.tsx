@@ -10,8 +10,10 @@ import { AuthProvider } from "@/components/auth-provider";
 import { PWARegistry } from "@/components/pwa-registry";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
+import { SITE_URL } from "@/lib/constants";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const baseUrl = SITE_URL;
+
 
 const siteConfig = {
   name: "TikDrop",
@@ -25,10 +27,11 @@ const siteConfig = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  // alternates: {
-  //   canonical: siteConfig.url,
-  // },
+  metadataBase: new URL(baseUrl),
+  alternates: {
+    canonical: "/",
+  },
+
   title: {
     default: `Download Video TikTok Tanpa Watermark (HD) - ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,

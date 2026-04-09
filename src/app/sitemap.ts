@@ -1,7 +1,9 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tikdrop.my.id').replace(/\/$/, '');
+  const baseUrl = SITE_URL.replace(/\/$/, '');
+
   const now = new Date().toISOString();
 
   const staticRoutes = [
