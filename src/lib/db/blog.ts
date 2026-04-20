@@ -17,13 +17,13 @@ const BLOG_COLLECTION = 'blog_posts';
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
-    const q = query(collection(db, BLOG_COLLECTION), orderBy('date', 'desc'));
+    const q = query(collection(db, BLOG_COLLECTION));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(doc => ({
       ...doc.data()
     } as BlogPost));
   } catch (error) {
-    console.error("Error fetching all posts:", error);
+    console.error("Error fetching all posts details:", error);
     return [];
   }
 }
