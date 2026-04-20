@@ -25,9 +25,14 @@ export async function getAllPosts(limitCount?: number): Promise<BlogPost[]> {
     }
     
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => ({
-      ...doc.data()
-    } as BlogPost));
+    return querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        ...data,
+        // Konversi Firestore Timestamp ke string agar bisa dikirim ke Client Component
+        updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null,
+      } as any as BlogPost;
+    });
   } catch (error) {
     console.error("Error fetching all posts details:", error);
     return [];
@@ -40,7 +45,11 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const docSnap = await getDoc(docRef);
     
     if (docSnap.exists()) {
-      return docSnap.data() as BlogPost;
+      const data = docSnap.data();
+      return {
+        ...data,
+        updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null,
+      } as any as BlogPost;
     }
     return null;
   } catch (error) {
