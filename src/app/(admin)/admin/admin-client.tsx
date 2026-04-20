@@ -17,6 +17,7 @@ const STATS = [
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BlogManager } from '@/components/admin/blog-manager';
+import { SettingsManager } from '@/components/admin/settings-manager';
 
 export default function AdminClient() {
     const { user, loading } = useAuth();
@@ -47,25 +48,28 @@ export default function AdminClient() {
     return (
         <div className="space-y-8">
                 <div className="flex justify-between items-center mb-8">
-                    <h1 className="text-3xl font-bold">Admin Panel</h1>
-                    <div className="text-sm text-muted-foreground">Logged in as: {user?.email}</div>
+                    <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
+                    <div className="text-sm text-muted-foreground font-mono bg-muted px-3 py-1 rounded-full">
+                        {user?.email}
+                    </div>
                 </div>
 
                 <Tabs value={activeTab} onValueChange={(value) => router.push(`/admin?tab=${value}`)} className="space-y-8">
-                    <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
+                    <TabsList className="grid w-full grid-cols-3 lg:w-[600px] p-1 bg-muted/50">
                         <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
                         <TabsTrigger value="blog">Manage Blog</TabsTrigger>
+                        <TabsTrigger value="settings">Settings</TabsTrigger>
                     </TabsList>
 
-                    <TabsContent value="dashboard" className="space-y-8">
+                    <TabsContent value="dashboard" className="space-y-8 animate-in fade-in duration-500">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {STATS.map((stat, i) => (
-                                <Card key={i}>
+                                <Card key={i} className="border-primary/5 bg-card/50 backdrop-blur-md">
                                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                         <CardTitle className="text-sm font-medium">
                                             {stat.label}
                                         </CardTitle>
-                                        <stat.icon className="h-4 w-4 text-muted-foreground" />
+                                        <stat.icon className="h-4 w-4 text-primary" />
                                     </CardHeader>
                                     <CardContent>
                                         <div className="text-2xl font-bold">{stat.value}</div>
@@ -77,7 +81,7 @@ export default function AdminClient() {
                             ))}
                         </div>
 
-                        <Card>
+                        <Card className="border-primary/5 bg-card/50 backdrop-blur-md">
                             <CardHeader>
                                 <CardTitle>Recent Activity</CardTitle>
                             </CardHeader>
@@ -87,8 +91,12 @@ export default function AdminClient() {
                         </Card>
                     </TabsContent>
 
-                    <TabsContent value="blog">
+                    <TabsContent value="blog" className="animate-in fade-in duration-500">
                         <BlogManager />
+                    </TabsContent>
+
+                    <TabsContent value="settings" className="animate-in fade-in duration-500">
+                        <SettingsManager />
                     </TabsContent>
                 </Tabs>
         </div>

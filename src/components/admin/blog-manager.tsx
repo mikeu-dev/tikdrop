@@ -25,6 +25,7 @@ const MDEditor = dynamic(
 
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
+import { getAdsenseSettings, generateAdsenseScript } from '@/lib/db/settings';
 
 export function BlogManager() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -47,13 +48,32 @@ export function BlogManager() {
     setLoading(false);
   };
 
+  const injectAdsense = async (content: string) => {
+    const adsSettings = await getAdsenseSettings();
+    if (adsSettings?.isEnabled) {
+      const adScript = generateAdsenseScript(adsSettings);
+      if (adScript && !content.includes('adsbygoogle')) {
+        const paragraphs = content.split('\n\n');
+        if (paragraphs.length > 3) {
+          paragraphs.splice(2, 0, adScript);
+          return paragraphs.join('\n\n');
+        } else {
+          return content + '\n\n' + adScript;
+        }
+      }
+    }
+    return content;
+  };
+
   const handleGenerateAI = async () => {
     if (!aiPrompt) return;
     setIsGenerating(true);
     try {
       const result = await generateBlogPostFlow({ prompt: aiPrompt, language: 'id' });
+      const finalContent = await injectAdsense(result.content);
       setCurrentPost({
         ...result,
+        content: finalContent,
         date: new Date().toISOString().split('T')[0],
         author: 'Admin'
       });
@@ -117,8 +137,15 @@ export function BlogManager() {
       if (originalSlug && originalSlug !== currentPost.slug) {
         await deletePost(originalSlug);
       }
+
+      // Injeksi otomatis iklan jika aktif
+      const finalContent = await injectAdsense(currentPost.content || '');
       
-      await upsertPost(currentPost as BlogPost);
+      await upsertPost({
+        ...currentPost,
+        content: finalContent
+      } as BlogPost);
+      
       toast({ title: "Berhasil!", description: "Artikel telah disimpan." });
       setIsEditing(false);
       setCurrentPost({});
