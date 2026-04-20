@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllPosts } from '@/lib/blog';
+import { getAllPosts } from '@/lib/db/blog';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   description: 'Dapatkan berita terbaru, tips viral, dan panduan lengkap seputar TikTok hanya di Blog TikDrop.',
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllPosts();
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -18,14 +18,14 @@ service cloud.firestore {
     }
 
     match /downloads/{downloadId} {
-      // Allow reading if the document belongs to the user
       allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
-      
-      // Allow creating if the new document's userId matches the authenticated user
       allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
-      
-      // Allow updating/deleting if the document belongs to the user
       allow update, delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    match /blog_posts/{slug} {
+      allow read: if true;
+      allow write: if true; // Temporary open for migration
     }
   }
 }

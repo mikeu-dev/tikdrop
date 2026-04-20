@@ -1,11 +1,11 @@
 import { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/constants';
-import { getAllPosts } from '@/lib/blog';
+import { getAllPosts } from '@/lib/db/blog';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = SITE_URL.replace(/\/$/, '');
   const now = new Date().toISOString();
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   const staticRoutes = [
     { path: '', changeFrequency: 'always' as const, priority: 1 },
