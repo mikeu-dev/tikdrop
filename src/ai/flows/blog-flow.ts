@@ -15,7 +15,7 @@ const BlogGeneratorOutputSchema = z.object({
   slug: z.string().describe('URL friendly slug.'),
   title: z.string().describe('Engaging title.'),
   description: z.string().describe('Short meta description.'),
-  content: z.string().describe('Full HTML content of the blog post. Include memes descriptions or placeholder image tags.'),
+  content: z.string().describe('Full Markdown content of the blog post. Use markdown syntax for images, headings, lists, and links.'),
   tags: z.array(z.string()).describe('Array of relevant tags.'),
   author: z.string().describe('Author name.'),
 });
@@ -31,8 +31,8 @@ const blogGeneratorPrompt = ai.definePrompt({
   
   Gunakan bahasa yang santai, gaul, namun tetap informatif (bahasa anak muda TikTok).
   Sisipkan humor dan "bumbu" meme di dalam teks. 
-  Untuk gambar/meme, gunakan tag HTML <img> dengan URL placeholder yang relevan atau deskripsi visual yang menarik.
-  Pastikan konten minimal 800 kata dan memiliki struktur HTML (h2, h3, p, ul, ol) yang baik.
+  Untuk gambar/meme, gunakan sintaks Markdown ![alt text](url) dengan URL placeholder yang relevan atau deskripsi visual yang menarik.
+  Pastikan konten minimal 1000 kata dan memiliki struktur Markdown (##, ###, -, 1., **bold**) yang baik.
   
   Format output harus JSON sesuai skema. Bahasa yang digunakan adalah {{language}}.`,
 });

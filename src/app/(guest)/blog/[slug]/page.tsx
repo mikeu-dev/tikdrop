@@ -36,6 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import ReactMarkdown from 'react-markdown';
+
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -89,8 +91,9 @@ export default async function BlogPostPage({ params }: Props) {
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
               prose-li:text-muted-foreground prose-strong:text-foreground
               prose-img:rounded-2xl prose-img:shadow-xl prose-img:mx-auto prose-img:border prose-img:border-primary/10"
-            dangerouslySetInnerHTML={{ __html: post.content }} 
-          />
+          >
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
 
           <footer className="mt-16 pt-8 border-t">
             <div className="bg-primary/5 rounded-2xl p-8 text-center">

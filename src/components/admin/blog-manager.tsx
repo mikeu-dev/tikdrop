@@ -8,9 +8,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Loader2, Plus, Sparkles, Trash2, Edit2, Save, X, Eye, PenLine } from 'lucide-react';
+import { Loader2, Plus, Sparkles, Trash2, Edit2, Save, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import dynamic from 'next/dynamic';
+
+const MDEditor = dynamic(
+  () => import("@uiw/react-md-editor"),
+  { ssr: false }
+);
+
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 
 export function BlogManager() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -143,39 +151,18 @@ export function BlogManager() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium">Content</label>
-              <Tabs defaultValue="edit" className="w-full border rounded-xl overflow-hidden">
-                <TabsList className="w-full justify-start rounded-none border-b bg-muted/50 p-0">
-                  <TabsTrigger value="edit" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-background py-2 px-4 gap-2">
-                    <PenLine className="w-4 h-4" /> Write
-                  </TabsTrigger>
-                  <TabsTrigger value="preview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-background py-2 px-4 gap-2">
-                    <Eye className="w-4 h-4" /> Preview
-                  </TabsTrigger>
-                </TabsList>
-                <TabsContent value="edit" className="p-0 m-0">
-                  <Textarea 
-                    className="min-h-[400px] font-mono text-sm border-0 focus-visible:ring-0 resize-y p-4"
-                    value={currentPost.content || ''} 
-                    onChange={(e) => setCurrentPost({...currentPost, content: e.target.value})}
-                    placeholder="Masukkan konten HTML di sini..."
-                  />
-                </TabsContent>
-                <TabsContent value="preview" className="p-0 m-0">
-                  <div className="min-h-[400px] p-6 bg-white dark:bg-slate-950 overflow-auto">
-                    <div 
-                      className="prose prose-sm md:prose-base dark:prose-invert max-w-none 
-                        prose-headings:font-bold prose-headings:text-foreground
-                        prose-p:text-muted-foreground prose-p:leading-relaxed
-                        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                        prose-li:text-muted-foreground prose-strong:text-foreground
-                        prose-img:rounded-xl prose-img:shadow-lg prose-img:mx-auto prose-img:border prose-img:border-primary/10"
-                      dangerouslySetInnerHTML={{ __html: currentPost.content || '<p class="text-muted-foreground italic">Belum ada konten untuk dipratinjau.</p>' }} 
-                    />
-                  </div>
-                </TabsContent>
-              </Tabs>
-              <p className="text-[10px] text-muted-foreground">Tip: Gunakan tag HTML standar seperti &lt;p&gt;, &lt;h2&gt;, &lt;img&gt;, &lt;ul&gt;, dll.</p>
+              <label className="text-sm font-medium">Content (Markdown)</label>
+              <div data-color-mode="light" className="border rounded-xl overflow-hidden">
+                <MDEditor
+                  value={currentPost.content || ''}
+                  onChange={(val) => setCurrentPost({...currentPost, content: val || ''})}
+                  height={500}
+                  preview="live"
+                  hideToolbar={false}
+                  enableScroll={true}
+                />
+              </div>
+              <p className="text-[10px] text-muted-foreground">Editor mendukung sintaks Markdown penuh (## Judul, **Tebal**, ![Gambar](url), dll).</p>
             </div>
 
             <div className="flex justify-end gap-3 pt-4">
