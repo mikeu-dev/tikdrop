@@ -9,15 +9,21 @@ import {
   query, 
   orderBy, 
   where,
+  limit,
   serverTimestamp 
 } from 'firebase/firestore';
 import { BlogPost } from '@/lib/types';
 
 const BLOG_COLLECTION = 'blog_posts';
 
-export async function getAllPosts(): Promise<BlogPost[]> {
+export async function getAllPosts(limitCount?: number): Promise<BlogPost[]> {
   try {
-    const q = query(collection(db, BLOG_COLLECTION), orderBy('date', 'desc'));
+    let q = query(collection(db, BLOG_COLLECTION), orderBy('date', 'desc'));
+    
+    if (limitCount) {
+      q = query(q, limit(limitCount));
+    }
+    
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(doc => ({
       ...doc.data()
