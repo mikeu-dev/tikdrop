@@ -11,9 +11,9 @@ import { PWARegistry } from "@/components/pwa-registry";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
 import { SITE_URL } from "@/lib/constants";
+import { Inter, Source_Code_Pro, Outfit } from "next/font/google";
 
 const baseUrl = SITE_URL;
-
 
 const siteConfig = {
   name: "TikDrop",
@@ -31,7 +31,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-
   title: {
     default: `Download Video TikTok Tanpa Watermark (HD) - ${siteConfig.name}`,
     template: `%s | ${siteConfig.name}`,
@@ -49,6 +48,7 @@ export const metadata: Metadata = {
     "simpan video tiktok",
     "snaptik alternatif",
     "tiktok saver id",
+    "download video tiktok",
   ],
   authors: [
     {
@@ -57,7 +57,6 @@ export const metadata: Metadata = {
     },
   ],
   creator: "TikDrop Team",
-
   openGraph: {
     type: "website",
     locale: "id_ID",
@@ -95,8 +94,6 @@ export const viewport: Viewport = {
   ],
 };
 
-import { Inter, Source_Code_Pro, Outfit } from "next/font/google";
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -115,8 +112,6 @@ const outfit = Outfit({
   display: "swap",
   fallback: ["system-ui", "arial"],
 });
-
-import { LayoutContent } from "@/components/layout-content";
 
 export default function RootLayout({
   children,
@@ -166,9 +161,9 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <LayoutContent>
+              <div className="grow flex flex-col">
                 {children}
-              </LayoutContent>
+              </div>
               <Toaster />
               <ScrollToTop />
               <AccessibilityWidget />
