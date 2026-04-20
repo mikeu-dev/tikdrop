@@ -7,15 +7,19 @@ import {
   SheetTrigger 
 } from "@/components/ui/sheet";
 
+import { Suspense } from "react";
+import { Loader2 } from "lucide-react";
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Desktop Sidebar */}
-      <AdminSidebar />
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-background"><Loader2 className="w-10 h-10 animate-spin text-primary" /></div>}>
+      <div className="min-h-screen flex bg-background">
+        {/* Desktop Sidebar */}
+        <AdminSidebar />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-h-screen">
@@ -47,6 +51,7 @@ export default function AdminLayout({
           &copy; {new Date().getFullYear()} TikDrop Admin Engine &bull; Secure Environment
         </footer>
       </div>
-    </div>
+      </div>
+    </Suspense>
   );
 }

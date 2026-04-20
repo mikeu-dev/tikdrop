@@ -1,14 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { 
   LayoutDashboard, 
   FileText, 
-  Settings, 
   LogOut, 
-  ChevronLeft, 
   Home,
   Users,
   TrendingUp,
@@ -19,13 +17,15 @@ import { useAuth } from '@/components/auth-provider';
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get('tab') || 'dashboard';
   const { logout } = useAuth();
 
   const menuItems = [
-    { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
-    { name: 'Manage Blog', href: '/admin?tab=blog', icon: FileText },
-    { name: 'User Stats', href: '/admin?tab=users', icon: Users },
-    { name: 'Analytics', href: '/admin?tab=analytics', icon: TrendingUp },
+    { name: 'Dashboard', href: '/admin', id: 'dashboard', icon: LayoutDashboard },
+    { name: 'Manage Blog', href: '/admin?tab=blog', id: 'blog', icon: FileText },
+    { name: 'User Stats', href: '/admin?tab=users', id: 'users', icon: Users },
+    { name: 'Analytics', href: '/admin?tab=analytics', id: 'analytics', icon: TrendingUp },
   ];
 
   return (
@@ -39,7 +39,7 @@ export function AdminSidebar() {
 
       <nav className="grow p-4 space-y-2 mt-4">
         {menuItems.map((item) => {
-          const isActive = pathname === item.href;
+          const isActive = activeTab === item.id;
           return (
             <Link 
               key={item.name} 
