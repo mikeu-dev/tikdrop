@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Loader2, Save, ExternalLink, AlertCircle } from 'lucide-react';
-import { toast } from 'sonner';
+import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 export function SettingsManager() {
@@ -19,6 +19,7 @@ export function SettingsManager() {
     adSlot: '',
     isEnabled: false
   });
+  const { toast } = useToast();
 
   useEffect(() => {
     loadSettings();
@@ -37,9 +38,9 @@ export function SettingsManager() {
     setIsSaving(true);
     try {
       await saveAdsenseSettings(settings);
-      toast.success('Pengaturan AdSense berhasil disimpan');
+      toast({ title: "Berhasil", description: 'Pengaturan AdSense berhasil disimpan' });
     } catch (error) {
-      toast.error('Gagal menyimpan pengaturan');
+      toast({ title: "Gagal", description: 'Gagal menyimpan pengaturan', variant: 'destructive' });
     } finally {
       setIsSaving(false);
     }
