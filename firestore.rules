@@ -25,7 +25,7 @@ service cloud.firestore {
 
     match /blog_posts/{slug} {
       allow read: if true;
-      allow write: if true; // Temporary open for migration
+      allow write: if isAuthenticated() && request.auth.token.email == "rikiruswandi28@gmail.com";
     }
   }
 }

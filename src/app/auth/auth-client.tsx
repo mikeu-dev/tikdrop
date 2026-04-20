@@ -17,9 +17,17 @@ export default function AuthClient() {
   const callbackUrl = searchParams.get('callbackUrl') || '/admin';
   const [isSigningIn, setIsSigningIn] = useState(false);
 
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     if (!loading && user) {
-      router.push(callbackUrl);
+      const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+      if (user.email === adminEmail) {
+        router.push(callbackUrl);
+      } else {
+        setError('Akses Ditolak: Anda bukan administrator.');
+        // Optionally logout immediately
+      }
     }
   }, [user, loading, router, callbackUrl]);
 
@@ -67,6 +75,15 @@ export default function AuthClient() {
               </div>
             </CardHeader>
             <CardContent className="space-y-4 py-6">
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-destructive/10 border border-destructive/20 text-destructive p-3 rounded-md text-sm text-center font-medium"
+                >
+                  {error}
+                </motion.div>
+              )}
               <Button 
                 onClick={handleSignIn} 
                 disabled={isSigningIn}
