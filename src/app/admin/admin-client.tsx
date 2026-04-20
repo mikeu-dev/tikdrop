@@ -28,7 +28,7 @@ export default function AdminClient() {
     useEffect(() => {
         if (!loading) {
             if (!user) {
-                router.push('/');
+                router.push('/auth?callbackUrl=/admin');
             } else {
                 const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
                 if (user.email === adminEmail) {
