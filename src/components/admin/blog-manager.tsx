@@ -27,6 +27,7 @@ export function BlogManager() {
   const [currentPost, setCurrentPost] = useState<Partial<BlogPost>>({});
   const [aiPrompt, setAiPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [originalSlug, setOriginalSlug] = useState<string | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -65,10 +66,16 @@ export function BlogManager() {
       return;
     }
     try {
+      // Jika slug berubah, hapus dokumen lama terlebih dahulu
+      if (originalSlug && originalSlug !== currentPost.slug) {
+        await deletePost(originalSlug);
+      }
+      
       await upsertPost(currentPost as BlogPost);
       toast({ title: "Berhasil!", description: "Artikel telah disimpan." });
       setIsEditing(false);
       setCurrentPost({});
+      setOriginalSlug(null);
       fetchPosts();
     } catch (error) {
       toast({ title: "Gagal!", description: "Gagal menyimpan artikel.", variant: "destructive" });
@@ -93,7 +100,7 @@ export function BlogManager() {
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Manage Blog Posts</h2>
         {!isEditing && (
-          <Button onClick={() => { setIsEditing(true); setCurrentPost({}); }}>
+          <Button onClick={() => { setIsEditing(true); setCurrentPost({}); setOriginalSlug(null); }}>
             <Plus className="w-4 h-4 mr-2" /> Add New Post
           </Button>
         )}
@@ -208,7 +215,7 @@ export function BlogManager() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="ghost" size="icon" onClick={() => { setIsEditing(true); setCurrentPost(post); }}>
+                  <Button variant="ghost" size="icon" onClick={() => { setIsEditing(true); setCurrentPost(post); setOriginalSlug(post.slug); }}>
                     <Edit2 className="w-4 h-4" />
                   </Button>
                   <Button variant="ghost" size="icon" className="text-destructive" onClick={() => handleDelete(post.slug)}>
