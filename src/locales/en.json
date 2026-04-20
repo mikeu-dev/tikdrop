@@ -12,7 +12,6 @@
     "result.downloadMp3": "Download MP3",
     "modal.title": "Your Download is Almost Ready!",
     "modal.description": "Please watch this ad to support our service. Your download will be available shortly.",
-    "modal.countdown": "{count} seconds remaining...",
     "modal.ready": "You can now proceed to download!",
     "modal.button": "Continue to Download {type}",
     "error.title": "Error",

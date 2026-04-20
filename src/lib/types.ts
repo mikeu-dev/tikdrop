@@ -15,3 +15,14 @@ export interface TikTokAPIResponse {
   data: VideoData;
   processed_time: number;
 }
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  content: string;
+  date: string;
+  author: string;
+  image: string;
+  tags: string[];
+}

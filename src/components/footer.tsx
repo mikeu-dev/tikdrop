@@ -17,6 +17,7 @@ export function Footer() {
             <p className="mt-1">{t('footer.disclaimer')}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4 md:mt-0 font-medium">
+            <Link href="/blog" className={`hover:text-primary transition-colors ${pathname.startsWith('/blog') ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>Blog</Link>
             <Link href="/privacy-policy" className={`hover:text-primary transition-colors ${pathname === '/privacy-policy' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.privacy')}</Link>
             <Link href="/terms-of-service" className={`hover:text-primary transition-colors ${pathname === '/terms-of-service' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.tos')}</Link>
             <Link href="/disclaimer" className={`hover:text-primary transition-colors ${pathname === '/disclaimer' ? 'text-primary font-bold decoration-2 underline-offset-4 underline' : ''}`}>{t('footer.links.disclaimer')}</Link>
