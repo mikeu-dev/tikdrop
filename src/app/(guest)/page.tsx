@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 import { SITE_URL } from "@/lib/constants";
 import HomeClient from "./home-client";
+import { getAllPosts } from "@/lib/db/blog";
 
 const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
+  // ... metadata tetap sama
   alternates: {
     canonical: "/",
   },
@@ -39,6 +41,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <HomeClient />;
+export default async function Home() {
+  const latestPosts = await getAllPosts(3);
+  return <HomeClient latestPosts={latestPosts} />;
 }
