@@ -90,7 +90,8 @@ export default async function BlogPostPage({ params }: Props) {
               prose-headings:font-bold prose-headings:text-foreground
               prose-p:text-muted-foreground prose-p:leading-relaxed
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-li:text-muted-foreground prose-strong:text-foreground"
+              prose-li:text-muted-foreground prose-strong:text-foreground
+              prose-img:rounded-2xl prose-img:shadow-xl prose-img:mx-auto prose-img:border prose-img:border-primary/10"
             dangerouslySetInnerHTML={{ __html: post.content }} 
           />
 
