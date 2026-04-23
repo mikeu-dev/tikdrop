@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   alternates: {
     canonical: "/",
+    languages: {
+      "id-ID": "/",
+      "en-US": "/en",
+    },
   },
   title: {
     default: `Download Video TikTok Tanpa Watermark (HD) - ${siteConfig.name}`,
