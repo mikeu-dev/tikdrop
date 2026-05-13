@@ -11,6 +11,7 @@ import { PWARegistry } from "@/components/pwa-registry";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
 import { SITE_URL } from "@/lib/constants";
+import { AdSenseScript } from "@/components/adsense-script";
 import { Inter, Source_Code_Pro, Outfit } from "next/font/google";
 
 const baseUrl = SITE_URL;
@@ -125,11 +126,8 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6698556269439251"
-          crossOrigin="anonymous"
-        ></script>
+        <AdSenseScript />
+
 
         {/* Google Analytics GA4 */}
         {process.env.NEXT_PUBLIC_MEASUREMENT_ID && (

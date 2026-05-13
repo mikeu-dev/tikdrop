@@ -4,10 +4,25 @@ import { getAllPosts } from '@/lib/db/blog';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Blog TikDrop - Tips & Panduan TikTok Terbaru',
-  description: 'Dapatkan berita terbaru, tips viral, dan panduan lengkap seputar TikTok hanya di Blog TikDrop.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const posts = await getAllPosts();
+  
+  return {
+    title: 'Blog TikDrop - Tips & Panduan TikTok Terbaru',
+    description: 'Dapatkan berita terbaru, tips viral, dan panduan lengkap seputar TikTok hanya di Blog TikDrop.',
+    robots: posts.length === 0 ? {
+      index: false,
+      follow: true,
+    } : {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: '/blog',
+    },
+  };
+}
+
 
 import { BlogClient } from '@/components/blog-client';
 
@@ -16,12 +31,24 @@ export default async function BlogPage() {
 
   if (posts.length === 0) {
     return (
-      <div className="flex flex-col min-h-screen items-center justify-center text-center p-4">
-        <h2 className="text-2xl font-bold mb-2">Belum ada artikel</h2>
-        <p className="text-muted-foreground">Silakan kembali lagi nanti untuk tips TikTok terbaru.</p>
+      <div className="flex flex-col min-h-screen items-center justify-center text-center p-4 max-w-2xl mx-auto space-y-6">
+        <div className="bg-primary/10 p-6 rounded-full">
+           <Calendar className="w-12 h-12 text-primary" />
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-3xl font-black">Wawasan Terbaru Sedang Disiapkan</h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Tim kami sedang menyusun artikel mendalam tentang strategi viral TikTok 2026, panduan teknis download, dan tips keamanan digital. Pantau terus halaman ini!
+          </p>
+        </div>
+        <Link href="/" className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20">
+           Kembali ke Beranda
+        </Link>
       </div>
     );
   }
+
+
 
   return (
     <div className="flex flex-col min-h-screen bg-linear-to-b from-background via-background/50 to-background">

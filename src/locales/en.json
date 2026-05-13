@@ -100,5 +100,19 @@
     "result.slideNum": "Slide {num}",
     "result.downloadZip": "Download All Images (ZIP)",
     "result.downloadZipSecondary": "Download Images (ZIP)",
-    "result.zipping": "Zipping..."
+    "result.zipping": "Zipping...",
+    "about.title": "About TikDrop",
+    "about.mission.title": "Our Mission",
+    "about.mission.desc": "TikDrop was founded with the mission to simplify access to creative content for everyone. We believe that everyone has the right to save their inspirations from TikTok for offline viewing, learning, or as creative references without technical barriers like watermarks.",
+    "about.quality.title": "Quality & Speed",
+    "about.quality.desc": "We use the latest server technology to ensure every download process happens in seconds. The video quality you get is the original quality uploaded by the creator, without any additional compression that ruins visuals.",
+    "about.free.title": "Forever Free",
+    "about.free.desc": "TikDrop will always be accessible for free. We are supported by non-intrusive ads to fund our infrastructure, so you don't have to spend a penny.",
+    "seo.how_to.title": "Step-by-Step Guide to Download TikTok Videos",
+    "seo.how_to.p1": "Downloading your favorite videos from TikTok to your device is now easier than ever. Follow these simple steps: First, find a video in the TikTok app and copy its link via the 'Share' menu. Second, open the TikDrop website and paste the link into the provided field. Third, press the 'Download' button and choose your desired format (MP4 or MP3). In an instant, the video will be saved to your gallery.",
+    "seo.benefits.title": "Benefits of Downloading TikTok Videos Without Watermark",
+    "seo.benefits.p1": "Removing the TikTok watermark provides a cleaner and more professional look to the video. This is very useful for content creators who want to analyze editing techniques, dancers who want to learn choreography offline, or educators who want to use videos as teaching materials without the visual distraction of a moving logo.",
+    "seo.safety.title": "Guaranteed Security and Privacy",
+    "seo.safety.p1": "At TikDrop, your privacy is our priority. We do not require account registration, do not store credit card data, and do not permanently record your download history on our servers. You can use our service with full anonymity and peace of mind that your device is protected from malware since we do not require any additional application installations.",
+    "footer.links.about": "About Us"
 }

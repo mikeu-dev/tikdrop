@@ -100,5 +100,19 @@
     "result.slideNum": "Slide Ke-{num}",
     "result.downloadZip": "Unduh Seluruh Gambar (Format ZIP)",
     "result.downloadZipSecondary": "Unduh Gambar (Dalam ZIP)",
-    "result.zipping": "Menyatukan dalam ZIP..."
+    "result.zipping": "Menyatukan dalam ZIP...",
+    "about.title": "Tentang TikDrop",
+    "about.mission.title": "Misi Kami",
+    "about.mission.desc": "TikDrop didirikan dengan misi untuk mempermudah akses konten kreatif bagi semua orang. Kami percaya bahwa setiap orang berhak menyimpan inspirasi mereka dari TikTok untuk ditonton secara offline, dipelajari, atau digunakan sebagai referensi kreatif tanpa hambatan teknis seperti watermark.",
+    "about.quality.title": "Kualitas & Kecepatan",
+    "about.quality.desc": "Kami menggunakan teknologi server termutakhir untuk memastikan setiap proses unduhan berjalan dalam hitungan detik. Kualitas video yang Anda dapatkan adalah kualitas asli yang diunggah oleh kreator, tanpa kompresi tambahan yang merusak visual.",
+    "about.free.title": "Selamanya Gratis",
+    "about.free.desc": "TikDrop akan selalu dapat diakses secara gratis. Kami didukung oleh iklan yang tidak mengganggu untuk membiayai infrastruktur kami, sehingga Anda tidak perlu mengeluarkan biaya sepeser pun.",
+    "seo.how_to.title": "Panduan Langkah demi Langkah Mengunduh Video TikTok",
+    "seo.how_to.p1": "Mengunduh video favorit dari TikTok ke perangkat Anda kini lebih mudah dari sebelumnya. Ikuti langkah sederhana berikut: Pertama, temukan video di aplikasi TikTok dan salin tautannya melalui menu 'Bagikan'. Kedua, buka situs TikDrop dan tempelkan tautan tersebut di kolom yang disediakan. Ketiga, tekan tombol 'Download' dan pilih format yang Anda inginkan (MP4 atau MP3). Dalam sekejap, video akan tersimpan di galeri Anda.",
+    "seo.benefits.title": "Manfaat Mengunduh Video TikTok Tanpa Watermark",
+    "seo.benefits.p1": "Menghapus watermark TikTok memberikan tampilan yang lebih bersih dan profesional pada video. Ini sangat berguna bagi para konten kreator yang ingin menganalisis teknik editing, penari yang ingin mempelajari koreografi secara offline, atau pendidik yang ingin menggunakan video sebagai bahan ajar tanpa distraksi visual logo yang berpindah-pindah.",
+    "seo.safety.title": "Keamanan dan Privasi Terjamin",
+    "seo.safety.p1": "Di TikDrop, privasi Anda adalah prioritas kami. Kami tidak meminta pendaftaran akun, tidak menyimpan data kartu kredit, dan tidak mencatat riwayat unduhan Anda secara permanen di server kami. Anda dapat menggunakan layanan kami dengan anonimitas penuh dan ketenangan pikiran bahwa perangkat Anda terlindungi dari malware karena kami tidak mengharuskan instalasi aplikasi tambahan.",
+    "footer.links.about": "Tentang Kami"
 }

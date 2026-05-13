@@ -326,10 +326,26 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
                     </ul>
                   </div>
 
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">{t('seo.how_to.title')}</h3>
+                    <p>{t('seo.how_to.p1')}</p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">{t('seo.benefits.title')}</h3>
+                    <p>{t('seo.benefits.p1')}</p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">{t('seo.safety.title')}</h3>
+                    <p>{t('seo.safety.p1')}</p>
+                  </div>
+
                   <div className="space-y-4 pt-4">
                     <h3 className="text-xl font-semibold text-foreground">{t('seo.article.h2_2')}</h3>
                     <p>{t('seo.article.p3')}</p>
                   </div>
+
                 </div>
               </article>
             </section>
