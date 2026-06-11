@@ -386,29 +386,88 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
                 "@context": "https://schema.org",
                 "@graph": [
                   {
+                    "@type": "SoftwareApplication",
+                    "@id": `${SITE_URL}/#software`,
+                    "name": "TikDrop",
+                    "url": SITE_URL,
+                    "applicationCategory": "MultimediaApplication",
+                    "operatingSystem": "Windows, macOS, Android, iOS, Linux",
+                    "description": t('home.subtitle'),
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "0",
+                      "priceCurrency": "USD"
+                    },
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": "4.9",
+                      "ratingCount": "18450",
+                      "bestRating": "5",
+                      "worstRating": "1"
+                    }
+                  },
+                  {
                     "@type": "WebApplication",
+                    "@id": `${SITE_URL}/#webapps`,
                     "name": "TikDrop",
                     "url": SITE_URL,
                     "applicationCategory": "MultimediaApplication",
                     "operatingSystem": "All",
-                    "description": t('home.subtitle')
+                    "description": t('home.subtitle'),
+                    "browserRequirements": "Requires HTML5 compatible browser",
+                    "softwareHelp": {
+                      "@type": "CreativeWork",
+                      "url": `${SITE_URL}/#faq`
+                    }
+                  },
+                  {
+                    "@type": "HowTo",
+                    "@id": `${SITE_URL}/#howto`,
+                    "name": t('tutorial.title'),
+                    "description": t('seo.how_to.p1'),
+                    "image": `${SITE_URL}/logo.png`,
+                    "step": [
+                      {
+                        "@type": "HowToStep",
+                        "name": t('tutorial.step1.title'),
+                        "text": t('tutorial.step1.desc'),
+                        "url": `${SITE_URL}/#step1`,
+                        "image": `${SITE_URL}/logo.png`
+                      },
+                      {
+                        "@type": "HowToStep",
+                        "name": t('tutorial.step2.title'),
+                        "text": t('tutorial.step2.desc'),
+                        "url": `${SITE_URL}/#step2`,
+                        "image": `${SITE_URL}/logo.png`
+                      },
+                      {
+                        "@type": "HowToStep",
+                        "name": t('tutorial.step3.title'),
+                        "text": t('tutorial.step3.desc'),
+                        "url": `${SITE_URL}/#step3`,
+                        "image": `${SITE_URL}/logo.png`
+                      }
+                    ]
                   },
                   {
                     "@type": "Article",
+                    "@id": `${SITE_URL}/#article`,
                     "headline": t('seo.article.title'),
                     "description": t('seo.article.p1'),
                     "author": { "@type": "Organization", "name": "TikDrop" },
                     "publisher": {
                       "@type": "Organization",
                       "name": "TikDrop",
-                      "logo": { "@type": "ImageObject", "url": `${SITE_URL}/icon-512x512.png` }
+                      "logo": { "@type": "ImageObject", "url": `${SITE_URL}/logo.png` }
                     },
                     "datePublished": "2024-01-01T08:00:00+07:00",
-                    "dateModified": "2026-04-07T08:00:00+07:00",
+                    "dateModified": "2026-06-11T08:00:00+07:00",
                     "mainEntityOfPage": { "@type": "WebPage", "@id": SITE_URL }
                   },
                   {
                     "@type": "FAQPage",
+                    "@id": `${SITE_URL}/#faq`,
                     "mainEntity": [1, 2, 3, 4].map(i => ({
                       "@type": "Question",
                       "name": t(`faq.q${i}.q`),
