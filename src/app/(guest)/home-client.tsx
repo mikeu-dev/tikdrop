@@ -25,6 +25,7 @@ import { motion } from 'framer-motion';
 import { saveDownload } from '@/lib/db/downloads';
 import { useAuth } from '@/components/auth-provider';
 import { SITE_URL } from '@/lib/constants';
+import { getAdsenseSettings } from '@/lib/db/settings';
 
 
 function ShareHandler({ onShare }: { onShare: (url: string) => void }) {
@@ -76,8 +77,21 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
   const [error, setError] = useState<string | null>(null);
   const [videoData, setVideoData] = useState<VideoData | null>(null);
   const [downloadCount, setDownloadCount] = useLocalStorage('downloadCount', 0);
+  const [bypassAdGate, setBypassAdGate] = useState(true);
   const { t, language } = useLanguage();
   const { user } = useAuth();
+
+  useEffect(() => {
+    getAdsenseSettings()
+      .then(settings => {
+        if (settings) {
+          setBypassAdGate(!settings.isEnabled);
+        }
+      })
+      .catch(err => {
+        console.error("Gagal memuat konfigurasi AdSense:", err);
+      });
+  }, []);
 
   const handleFetchVideo = async (url: string) => {
     setIsLoading(true);
@@ -174,7 +188,7 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
 
             {videoData && (
               <div className="mt-8">
-                <ResultCard videoData={videoData} onDownload={incrementDownloadCount} />
+                <ResultCard videoData={videoData} onDownload={incrementDownloadCount} bypassAdGate={bypassAdGate} />
               </div>
             )}
           </div>
@@ -186,30 +200,6 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
             }}
             className="space-y-24 sm:space-y-32 pb-24"
           >
-            {/* Services Section */}
-            <section>
-              <h2 className="text-2xl sm:text-3xl font-black text-center mb-12 tracking-tight">{t('services.title')}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {[
-                  { icon: Zap, title: t('services.s1.title'), desc: t('services.s1.desc') },
-                  { icon: ShieldCheck, title: t('services.s2.title'), desc: t('services.s2.desc') },
-                  { icon: MonitorSmartphone, title: t('services.s3.title'), desc: t('services.s3.desc') }
-                ].map((s, i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ y: -5 }}
-                    className="group bg-card/30 backdrop-blur-md p-8 rounded-2xl border border-primary/5 hover:border-primary/20 transition-all shadow-xl hover:shadow-primary/5 text-center space-y-4"
-                  >
-                    <div className="mx-auto bg-primary/10 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <s.icon className="h-7 w-7 text-primary" />
-                    </div>
-                    <h3 className="font-bold text-lg">{s.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-
             {/* Latest Blogs Section */}
             {latestPosts.length > 0 && (
               <section>
@@ -250,6 +240,30 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
                 </div>
               </section>
             )}
+
+            {/* Services Section */}
+            <section>
+              <h2 className="text-2xl sm:text-3xl font-black text-center mb-12 tracking-tight">{t('services.title')}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {[
+                  { icon: Zap, title: t('services.s1.title'), desc: t('services.s1.desc') },
+                  { icon: ShieldCheck, title: t('services.s2.title'), desc: t('services.s2.desc') },
+                  { icon: MonitorSmartphone, title: t('services.s3.title'), desc: t('services.s3.desc') }
+                ].map((s, i) => (
+                  <motion.div 
+                    key={i}
+                    whileHover={{ y: -5 }}
+                    className="group bg-card/30 backdrop-blur-md p-8 rounded-2xl border border-primary/5 hover:border-primary/20 transition-all shadow-xl hover:shadow-primary/5 text-center space-y-4"
+                  >
+                    <div className="mx-auto bg-primary/10 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <s.icon className="h-7 w-7 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-lg">{s.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
 
             {/* Tutorial Section */}
             <section>

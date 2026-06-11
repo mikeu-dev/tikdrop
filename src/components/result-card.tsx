@@ -21,20 +21,52 @@ import { motion } from 'framer-motion';
 interface ResultCardProps {
   videoData: VideoData;
   onDownload: () => void;
+  bypassAdGate?: boolean;
 }
 
-export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
+export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload, bypassAdGate = true }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [downloadInfo, setDownloadInfo] = useState<{ url: string; type: string } | null>(null);
   const [isZipping, setIsZipping] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const { t } = useLanguage();
 
   const isSlideshow = videoData.images && videoData.images.length > 0;
   const videoUrl = videoData.hdplay || videoData.play;
 
-  const handleDownloadClick = (url: string, type: string) => {
-    setDownloadInfo({ url, type });
-    setIsModalOpen(true);
+  const handleDownloadClick = async (url: string, type: string) => {
+    if (bypassAdGate) {
+      try {
+        setIsDownloading(true);
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Fetch failed');
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.setAttribute('download', `TikDrop_${Date.now()}.${type.toLowerCase()}`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+        onDownload();
+      } catch (error) {
+        console.warn('Blob download failed, falling back to direct link:', error);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `TikDrop_${Date.now()}.${type.toLowerCase()}`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        onDownload();
+      } finally {
+        setIsDownloading(false);
+      }
+    } else {
+      setDownloadInfo({ url, type });
+      setIsModalOpen(true);
+    }
   };
 
   const handleDownloadZip = async () => {
@@ -157,8 +189,13 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
               className="w-full sm:w-auto flex-1 font-semibold h-12 text-base shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"
               size="lg"
               onClick={() => handleDownloadClick(videoUrl, 'MP4')}
+              disabled={isDownloading}
             >
-              <Download className="mr-2 h-5 w-5" />
+              {isDownloading ? (
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              ) : (
+                <Download className="mr-2 h-5 w-5" />
+              )}
               {t('result.downloadMp4')}
             </Button>
           )}
@@ -188,8 +225,13 @@ export const ResultCard: FC<ResultCardProps> = ({ videoData, onDownload }) => {
               size="lg"
               variant="outline"
               onClick={() => handleDownloadClick(videoData.music!, 'MP3')}
+              disabled={isDownloading}
             >
-              <Music className="mr-2 h-5 w-5" />
+              {isDownloading ? (
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              ) : (
+                <Music className="mr-2 h-5 w-5" />
+              )}
               {t('result.downloadMp3')}
             </Button>
           )}

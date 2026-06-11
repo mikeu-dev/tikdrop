@@ -34,6 +34,7 @@ export function BlogManager() {
   const [currentPost, setCurrentPost] = useState<Partial<BlogPost>>({});
   const [aiPrompt, setAiPrompt] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isSeeding, setIsSeeding] = useState(false);
   const [originalSlug, setOriginalSlug] = useState<string | null>(null);
   const { toast } = useToast();
 
@@ -46,6 +47,45 @@ export function BlogManager() {
     const data = await getAllPosts();
     setPosts(data);
     setLoading(false);
+  };
+
+  const handleSeedArticles = async () => {
+    if (!confirm('Apakah Anda ingin memicu AI untuk menghasilkan 5 artikel blog premium tentang TikTok & Media Sosial secara otomatis langsung ke database? Ini akan memakan waktu sekitar 1-2 menit.')) return;
+    setIsSeeding(true);
+    toast({ title: "Mulai Memproses", description: "AI sedang membuat artikel berkualitas satu per satu. Jangan menutup halaman ini." });
+
+    const seedPrompts = [
+      "Panduan lengkap cara mengoptimalkan video TikTok agar FYP di tahun 2026: memahami algoritma terbaru, penggunaan hashtag pintar, dan trik visual di detik pertama.",
+      "Cara download video TikTok tanpa watermark secara aman dan etis: etika hak cipta kreator dan cara membagikan ulang konten secara legal.",
+      "Tren editing video TikTok 2026: rahasia transisi yang viral, teknik color grading sinematik menggunakan aplikasi gratis, dan cara membuat hook menarik.",
+      "Cara menghasilkan uang dari TikTok Affiliate dan TikTok Shop untuk pemula: langkah demi langkah dari nol pengikut hingga pecah telur komisi pertama.",
+      "Panduan privasi dan keamanan akun TikTok: cara melindungi data pribadi dari pengintai dan mengamankan akun dari pembajakan dengan otentikasi dua faktor."
+    ];
+
+    let successCount = 0;
+    for (const promptText of seedPrompts) {
+      try {
+        const result = await generateBlogPostFlow({ prompt: promptText, language: 'id' });
+        const finalContent = await injectAdsense(result.content);
+        
+        await upsertPost({
+          ...result,
+          content: finalContent,
+          date: new Date().toISOString().split('T')[0],
+          author: 'TikDrop Editorial Team'
+        } as BlogPost);
+        
+        successCount++;
+        toast({ title: `Artikel ${successCount}/${seedPrompts.length} Berhasil`, description: `"${result.title}" disimpan ke database.` });
+      } catch (err) {
+        console.error("Gagal seeding artikel:", err);
+        toast({ title: "Artikel Gagal", description: `Gagal membuat artikel untuk prompt: "${promptText.substring(0, 30)}..."`, variant: "destructive" });
+      }
+    }
+
+    setIsSeeding(false);
+    toast({ title: "Proses Selesai", description: `Berhasil menambahkan ${successCount} artikel premium ke database.` });
+    fetchPosts();
   };
 
   const injectAdsense = async (content: string) => {
@@ -173,11 +213,19 @@ export function BlogManager() {
     <div className="space-y-8">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Manage Blog Posts</h2>
-        {!isEditing && (
-          <Button onClick={() => { setIsEditing(true); setCurrentPost({}); setOriginalSlug(null); }}>
-            <Plus className="w-4 h-4 mr-2" /> Add New Post
-          </Button>
-        )}
+        <div className="flex gap-2">
+          {!isEditing && (
+            <>
+              <Button onClick={handleSeedArticles} disabled={isSeeding} variant="outline" className="border-primary/20 text-primary hover:bg-primary/5">
+                {isSeeding ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Sparkles className="w-4 h-4 mr-2" />} 
+                {isSeeding ? 'Seeding...' : 'Seed Premium Articles'}
+              </Button>
+              <Button onClick={() => { setIsEditing(true); setCurrentPost({}); setOriginalSlug(null); }}>
+                <Plus className="w-4 h-4 mr-2" /> Add New Post
+              </Button>
+            </>
+          )}
+        </div>
       </div>
 
       {isEditing ? (

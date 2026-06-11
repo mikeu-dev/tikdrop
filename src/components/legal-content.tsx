@@ -209,50 +209,129 @@ export function LegalContent({ type }: LegalContentProps) {
   }
 
   if (type === 'contact') {
+    const email = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id';
     return language === 'en' ? (
-      <div className="prose dark:prose-invert max-w-none space-y-6">
-        <p className="text-lg">
+      <div className="space-y-8">
+        <p className="text-lg text-muted-foreground">
           Have questions, feedback, license omission complaints, or just want to say hi to the platform's devs? We are always open to criticism to develop this site for the better in the future.
         </p>
 
-        <div className="bg-card border rounded-xl p-8 mt-8 flex flex-col items-center justify-center space-y-4">
-          <div className="bg-primary/10 p-4 rounded-full">
-            <Mail className="w-8 h-8 text-primary" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          {/* Support Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">User Support</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Need help using TikDrop or experiencing issues downloading videos? Contact our technical support team.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[SUPPORT]%20TikDrop%20Support`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              Contact Support &rarr;
+            </a>
           </div>
-          <h2 className="text-xl font-semibold m-0">Send an Email</h2>
-          <p className="text-center text-muted-foreground m-0">
-            Please send an electronic message to the address below. We will try to respond within 2x24 business hours.
-          </p>
-          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}`} className="text-2xl font-bold text-primary hover:underline m-0">
-            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}
-          </a>
+
+          {/* Business Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-green-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-green-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">Business & Ads</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                For custom advertising placements, collaborations, or partnership inquiries, reach out to our business team.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[AD]%20TikDrop%20Partnership`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              Inquire Collaboration &rarr;
+            </a>
+          </div>
+
+          {/* DMCA Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-red-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-red-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">DMCA & Copyright</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                If your copyrighted content is used incorrectly or you want to request content exclusion, email our legal desk.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[DMCA]%20Content%20Removal`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              File DMCA Report &rarr;
+            </a>
+          </div>
         </div>
 
-        <div className="mt-12 text-sm text-muted-foreground">
-          <p><strong>Note for Advertisers/Corporate:</strong> If you are interested in placing Custom Banner Ads, please use the Subject format: <code>[AD] - Your Company Name</code> so that the email does not go to the SPAM folder.</p>
+        <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 text-sm text-muted-foreground mt-8 text-center">
+          <p className="m-0">
+            All inquiries are sent to <strong>{email}</strong>. We strive to reply within 24-48 business hours.
+          </p>
         </div>
       </div>
     ) : (
-      <div className="prose dark:prose-invert max-w-none space-y-6">
-        <p className="text-lg">
+      <div className="space-y-8">
+        <p className="text-lg text-muted-foreground">
           Ada pertanyaan, masukan, keluhan kelalaian lisensi, atau sekadar ingin menyapa pengembang platform ini? Kami senantiasa terbuka untuk kritik demi pengembangan situs ini agar lebih baik kedepannya.
         </p>
 
-        <div className="bg-card border rounded-xl p-8 mt-8 flex flex-col items-center justify-center space-y-4">
-          <div className="bg-primary/10 p-4 rounded-full">
-            <Mail className="w-8 h-8 text-primary" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          {/* Support Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-blue-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-blue-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">Dukungan Pengguna</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Butuh bantuan menggunakan TikDrop atau mengalami kendala saat mendownload? Hubungi tim dukungan teknis kami.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[SUPPORT]%20TikDrop%20Dukungan`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              Hubungi Dukungan &rarr;
+            </a>
           </div>
-          <h2 className="text-xl font-semibold m-0">Kirimkan Email</h2>
-          <p className="text-center text-muted-foreground m-0">
-            Silahkan berkirim pesan elektronik ke alamat di bawah ini. Kami akan berusaha merespons dalam waktu 2x24 jam kerja.
-          </p>
-          <a href={`mailto:${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}`} className="text-2xl font-bold text-primary hover:underline m-0">
-            {process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@tikdrop.id'}
-          </a>
+
+          {/* Business Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-green-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-green-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">Kerjasama & Iklan</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Untuk penempatan iklan kustom, kolaborasi media, atau penawaran kemitraan, hubungi tim bisnis kami.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[IKLAN]%20Kerjasama%20TikDrop`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              Ajukan Kerjasama &rarr;
+            </a>
+          </div>
+
+          {/* DMCA Card */}
+          <div className="bg-card/50 border border-primary/5 p-6 rounded-2xl flex flex-col justify-between space-y-4 hover:border-primary/20 transition-all">
+            <div className="space-y-2">
+              <div className="bg-red-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                <Mail className="w-6 h-6 text-red-500" />
+              </div>
+              <h3 className="text-lg font-bold text-foreground">DMCA & Hak Cipta</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Jika konten berhak cipta Anda digunakan secara keliru atau ingin mengajukan penghapusan konten, hubungi meja hukum kami.
+              </p>
+            </div>
+            <a href={`mailto:${email}?subject=[DMCA]%20Penghapusan%20Konten`} className="text-sm font-semibold text-primary hover:underline flex items-center gap-1">
+              Kirim Laporan DMCA &rarr;
+            </a>
+          </div>
         </div>
 
-        <div className="mt-12 text-sm text-muted-foreground">
-          <p><strong>Catatan untuk Pengiklan/Corporate:</strong> Jika Anda tertarik untuk memasang Iklan Banner Kustom, silakan gunakan format Subjek: <code>[IKLAN] - Nama Perusahaan Anda</code> agar email tidak masuk ke folder SPAM.</p>
+        <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 text-sm text-muted-foreground mt-8 text-center">
+          <p className="m-0">
+            Semua korespondensi ditujukan ke <strong>{email}</strong>. Kami berusaha membalas dalam waktu 24-48 jam kerja.
+          </p>
         </div>
       </div>
     );
