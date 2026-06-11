@@ -41,6 +41,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 import ReactMarkdown from 'react-markdown';
+import { getAdsenseSettings } from '@/lib/db/settings';
+import AdSense from '@/components/adsense';
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
@@ -49,6 +51,22 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) {
     notFound();
   }
+
+  const adsSettings = await getAdsenseSettings();
+  const isAdEnabled = adsSettings?.isEnabled && adsSettings?.adSlot;
+
+  // Bersihkan tag script, ins, dan container AdSense HTML mentah dari database lama agar tidak ter-render sebagai teks biasa
+  const cleanContent = post.content
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<ins\b[^<]*(?:(?!<\/ins>)<[^<]*)*<\/ins>/gi, '')
+    .replace(/<div[^>]*class="[^"]*adsense-container[^"]*"[^>]*>([\s\S]*?)<\/div>/gi, '')
+    .trim();
+
+  const paragraphs = cleanContent.split('\n\n');
+  const showAd = isAdEnabled && paragraphs.length > 2;
+
+  const firstHalf = showAd ? paragraphs.slice(0, 2).join('\n\n') : cleanContent;
+  const secondHalf = showAd ? paragraphs.slice(2).join('\n\n') : '';
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -94,6 +112,7 @@ export default async function BlogPostPage({ params }: Props) {
                 src={formatThumbnailUrl(post.thumbnail)} 
                 alt={post.title} 
                 className="w-full aspect-video object-cover"
+                suppressHydrationWarning
               />
             </div>
           )}
@@ -106,7 +125,15 @@ export default async function BlogPostPage({ params }: Props) {
               prose-li:text-muted-foreground prose-strong:text-foreground
               prose-img:rounded-2xl prose-img:shadow-xl prose-img:mx-auto prose-img:border prose-img:border-primary/10"
           >
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown>{firstHalf}</ReactMarkdown>
+            
+            {showAd && (
+              <div className="my-8 flex justify-center w-full min-h-[100px]">
+                <AdSense adSlot={adsSettings.adSlot} adFormat="auto" />
+              </div>
+            )}
+
+            {secondHalf && <ReactMarkdown>{secondHalf}</ReactMarkdown>}
           </div>
 
           <footer className="mt-16 pt-8 border-t">

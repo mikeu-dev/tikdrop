@@ -221,6 +221,7 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
                               src={formatThumbnailUrl(post.thumbnail)} 
                               alt={post.title} 
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              suppressHydrationWarning
                             />
                           ) : (
                             <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-accent/10 flex items-center justify-center">

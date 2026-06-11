@@ -32,11 +32,19 @@ const AdSense: FC<AdSenseProps> = ({
 
   useEffect(() => {
     if (!isMounted) return;
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (err) {
-      console.error('AdSense error:', err);
-    }
+    
+    const timer = setTimeout(() => {
+      try {
+        const unprocessed = document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status="done"])');
+        if (unprocessed.length > 0) {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
+      } catch (err) {
+        console.error('AdSense error:', err);
+      }
+    }, 150);
+
+    return () => clearTimeout(timer);
   }, [adSlot, pathname, isMounted]);
 
   if (!isMounted) {

@@ -98,6 +98,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                           src={formatThumbnailUrl(featured.thumbnail)} 
                           alt={featured.title} 
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          suppressHydrationWarning
                         />
                       ) : (
                         <div className="absolute inset-0 bg-linear-to-br from-primary/30 to-accent/30 flex items-center justify-center">
@@ -147,6 +148,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                         src={formatThumbnailUrl(post.thumbnail)} 
                         alt={post.title} 
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        suppressHydrationWarning
                       />
                     ) : (
                       <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-accent/10 flex items-center justify-center">

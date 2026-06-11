@@ -11,7 +11,7 @@ import { PWARegistry } from "@/components/pwa-registry";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { AccessibilityWidget } from "@/components/accessibility-widget";
 import { SITE_URL } from "@/lib/constants";
-import { AdSenseScript } from "@/components/adsense-script";
+import { AdSenseLoader } from "@/components/adsense-loader";
 import { Inter, Source_Code_Pro, Outfit } from "next/font/google";
 
 const baseUrl = SITE_URL;
@@ -132,7 +132,7 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <head>
-        <AdSenseScript />
+        <AdSenseLoader />
 
 
         {/* Google Analytics GA4 */}

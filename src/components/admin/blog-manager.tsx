@@ -90,19 +90,6 @@ export function BlogManager() {
   };
 
   const injectAdsense = async (content: string) => {
-    const adsSettings = await getAdsenseSettings();
-    if (adsSettings?.isEnabled) {
-      const adScript = generateAdsenseScript(adsSettings);
-      if (adScript && !content.includes('adsbygoogle')) {
-        const paragraphs = content.split('\n\n');
-        if (paragraphs.length > 3) {
-          paragraphs.splice(2, 0, adScript);
-          return paragraphs.join('\n\n');
-        } else {
-          return content + '\n\n' + adScript;
-        }
-      }
-    }
     return content;
   };
 
