@@ -26,6 +26,7 @@ import { saveDownload } from '@/lib/db/downloads';
 import { useAuth } from '@/components/auth-provider';
 import { SITE_URL } from '@/lib/constants';
 import { getAdsenseSettings } from '@/lib/db/settings';
+import { formatThumbnailUrl } from '@/lib/utils';
 
 
 function ShareHandler({ onShare }: { onShare: (url: string) => void }) {
@@ -216,7 +217,7 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
                         <div className="relative aspect-video overflow-hidden">
                           {post.thumbnail ? (
                             <img 
-                              src={post.thumbnail} 
+                              src={formatThumbnailUrl(post.thumbnail)} 
                               alt={post.title} 
                               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />

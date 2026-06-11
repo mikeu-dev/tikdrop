@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts } from '@/lib/db/blog';
 import { Calendar, User, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
+import { formatThumbnailUrl } from '@/lib/utils';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -90,7 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
           {post.thumbnail && (
             <div className="mb-10 rounded-2xl overflow-hidden border border-primary/10 shadow-lg">
               <img 
-                src={post.thumbnail} 
+                src={formatThumbnailUrl(post.thumbnail)} 
                 alt={post.title} 
                 className="w-full aspect-video object-cover"
               />

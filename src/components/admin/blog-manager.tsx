@@ -26,6 +26,7 @@ const MDEditor = dynamic(
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import { getAdsenseSettings, generateAdsenseScript } from '@/lib/db/settings';
+import { formatThumbnailUrl } from '@/lib/utils';
 
 export function BlogManager() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -290,7 +291,7 @@ export function BlogManager() {
                 />
                 {currentPost.thumbnail && (
                   <div className="relative w-20 h-20 rounded-lg overflow-hidden border shrink-0">
-                    <img src={currentPost.thumbnail} alt="Preview" className="w-full h-full object-cover" />
+                    <img src={formatThumbnailUrl(currentPost.thumbnail)} alt="Preview" className="w-full h-full object-cover" />
                   </div>
                 )}
               </div>
@@ -348,7 +349,7 @@ export function BlogManager() {
                 <div className="flex items-center gap-4">
                   {post.thumbnail && (
                     <div className="w-16 h-16 rounded-md overflow-hidden border shrink-0">
-                      <img src={post.thumbnail} alt={post.title} className="w-full h-full object-cover" />
+                      <img src={formatThumbnailUrl(post.thumbnail)} alt={post.title} className="w-full h-full object-cover" />
                     </div>
                   )}
                   <div>

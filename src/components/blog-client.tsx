@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Calendar, User, ArrowRight, Search, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { formatThumbnailUrl } from '@/lib/utils';
 
 interface BlogClientProps {
   posts: BlogPost[];
@@ -94,7 +95,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                     <div className="relative aspect-video lg:aspect-auto overflow-hidden">
                       {featured.thumbnail ? (
                         <img 
-                          src={featured.thumbnail} 
+                          src={formatThumbnailUrl(featured.thumbnail)} 
                           alt={featured.title} 
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
@@ -143,7 +144,7 @@ export function BlogClient({ posts }: BlogClientProps) {
                   <div className="relative aspect-video overflow-hidden">
                     {post.thumbnail ? (
                       <img 
-                        src={post.thumbnail} 
+                        src={formatThumbnailUrl(post.thumbnail)} 
                         alt={post.title} 
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
