@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tikdrop-v1';
+const CACHE_NAME = 'tikdrop-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/logo.png',
