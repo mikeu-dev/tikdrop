@@ -35,8 +35,8 @@ const blogGeneratorPrompt = ai.definePrompt({
      - Gunakan standar industri TERBARU (2024-2025) untuk teknologi apa pun yang disebutkan.
      - Gunakan bahasa yang santai, gaul, namun tetap informatif (campuran bahasa Indonesia dan istilah tech populer).
   2. **Visuals**:
-     - **Thumbnail**: Sertakan URL gambar thumbnail yang menarik (800x600) menggunakan Unsplash atau LoremFlickr (contoh: https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800).
-     - **Images**: Sertakan 2-3 gambar relevan di dalam konten menggunakan sintaks Markdown.
+     - **Thumbnail**: Sertakan URL gambar thumbnail yang menarik (800x600) menggunakan LoremFlickr berbasis kata kunci bahasa Inggris yang sangat relevan (contoh: https://loremflickr.com/800/600/tiktok,socialmedia). Jangan gunakan Unsplash.
+     - **Images**: Sertakan 2-3 gambar relevan di dalam konten menggunakan sintaks Markdown dengan URL dari LoremFlickr berbasis kata kunci (contoh: ![deskripsi](https://loremflickr.com/800/600/smartphone,app)). Jangan gunakan Unsplash.
   3. **Typography & Structure**:
      - Gunakan hierarki visual yang jelas: ## untuk bagian utama, ### untuk poin bersarang.
      - Gunakan Blockquotes (>) untuk "Pro Tips", poin penting, atau observasi humoris.
