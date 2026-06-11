@@ -3,6 +3,8 @@ import { SITE_URL } from "@/lib/constants";
 import HomeClient from "./home-client";
 import { getAllPosts } from "@/lib/db/blog";
 
+export const dynamic = 'force-dynamic';
+
 const baseUrl = SITE_URL;
 
 export const metadata: Metadata = {
