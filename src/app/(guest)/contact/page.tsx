@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Contact Us',
   description: 'Hubungi tim TikDrop untuk pertanyaan dan masukan.',
   alternates: {
-    canonical: '/contact',
+    canonical: '/contact/',
   },
 };
 

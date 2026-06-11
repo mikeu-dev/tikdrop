@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Disclaimer',
   description: 'Pernyataan Penyangkalan (Disclaimer) untuk pengguna TikDrop',
   alternates: {
-    canonical: '/disclaimer',
+    canonical: '/disclaimer/',
   },
 };
 

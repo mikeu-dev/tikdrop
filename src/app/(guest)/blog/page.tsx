@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: true,
     },
     alternates: {
-      canonical: '/blog',
+      canonical: '/blog/',
     },
   };
 }

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description: 'Syarat dan Ketentuan penggunaan layanan TikDrop',
   alternates: {
-    canonical: '/terms-of-service',
+    canonical: '/terms-of-service/',
   },
 };
 

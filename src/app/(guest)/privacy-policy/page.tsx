@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'Kebijakan Privasi terkait informasi yang dikumpulkan oleh TikDrop',
   alternates: {
-    canonical: '/privacy-policy',
+    canonical: '/privacy-policy/',
   },
 };
 

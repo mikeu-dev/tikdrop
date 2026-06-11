@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         follow: false,
     },
     alternates: {
-        canonical: '/history',
+        canonical: '/history/',
     },
 };
 
