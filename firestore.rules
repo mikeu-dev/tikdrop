@@ -29,7 +29,8 @@ service cloud.firestore {
     }
 
     match /settings/{docId} {
-      allow read, write: if isAuthenticated() && request.auth.token.email == "rikiruswandi28@gmail.com";
+      allow read: if true;
+      allow write: if isAuthenticated() && request.auth.token.email == "rikiruswandi28@gmail.com";
     }
   }
 }

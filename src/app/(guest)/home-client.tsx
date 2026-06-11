@@ -90,7 +90,8 @@ export default function HomeClient({ latestPosts = [] }: HomeClientProps) {
         }
       })
       .catch(err => {
-        console.error("Gagal memuat konfigurasi AdSense:", err);
+        // Silently default to bypassing adgate if permission denied (e.g. before rules deploy)
+        setBypassAdGate(true);
       });
   }, []);
 
