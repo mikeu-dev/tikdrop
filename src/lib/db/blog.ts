@@ -13,6 +13,7 @@ import {
   serverTimestamp 
 } from 'firebase/firestore';
 import { BlogPost } from '@/lib/types';
+import { FALLBACK_POSTS } from './fallback-posts';
 
 const BLOG_COLLECTION = 'blog_posts';
 
@@ -25,7 +26,7 @@ export async function getAllPosts(limitCount?: number): Promise<BlogPost[]> {
     }
     
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => {
+    const posts = querySnapshot.docs.map(doc => {
       const data = doc.data();
       return {
         ...data,
@@ -33,9 +34,14 @@ export async function getAllPosts(limitCount?: number): Promise<BlogPost[]> {
         updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null,
       } as any as BlogPost;
     });
+
+    if (posts.length === 0) {
+      return limitCount ? FALLBACK_POSTS.slice(0, limitCount) : FALLBACK_POSTS;
+    }
+    return posts;
   } catch (error) {
-    console.error("Error fetching all posts details:", error);
-    return [];
+    console.error("Error fetching all posts details, returning fallback posts:", error);
+    return limitCount ? FALLBACK_POSTS.slice(0, limitCount) : FALLBACK_POSTS;
   }
 }
 
@@ -51,10 +57,14 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
         updatedAt: data.updatedAt?.toDate?.()?.toISOString() || null,
       } as any as BlogPost;
     }
-    return null;
+    
+    // Cari di fallback jika tidak ada di DB
+    const fallbackPost = FALLBACK_POSTS.find(post => post.slug === slug);
+    return fallbackPost || null;
   } catch (error) {
-    console.error(`Error fetching post with slug ${slug}:`, error);
-    return null;
+    console.error(`Error fetching post with slug ${slug}, checking fallback posts:`, error);
+    const fallbackPost = FALLBACK_POSTS.find(post => post.slug === slug);
+    return fallbackPost || null;
   }
 }
 
@@ -80,3 +90,4 @@ export async function deletePost(slug: string): Promise<void> {
     throw error;
   }
 }
+
